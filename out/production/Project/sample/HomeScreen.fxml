@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #a3dce6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeScreenController">
+   <children>
+      <Label fx:id="PlayButtononHomeScreen" alignment="CENTER" layoutX="323.0" layoutY="172.0" onMouseClicked="#PlayButtonClicked" onMouseEntered="#PlayButtonAnimation" onMouseExited="#PlayButtonAnimation2" prefHeight="74.0" prefWidth="254.0" text="Play" textAlignment="CENTER" textFill="YELLOW">
+         <font>
+            <Font name="Comic Sans MS" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="ContSavedGameonHomeScreen" alignment="CENTER" layoutX="168.0" layoutY="246.0" onMouseClicked="#ContinueSavedGameButtonClicked" onMouseEntered="#ContSavedGameAnimation" onMouseExited="#ContSavedGameAnimation2" prefHeight="74.0" prefWidth="586.0" text="Continue Saved Game" textAlignment="CENTER" textFill="YELLOW">
+         <font>
+            <Font name="Comic Sans MS" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="LogoutonHomeScreen" alignment="CENTER" layoutX="323.0" layoutY="344.0" onMouseEntered="#LogoutAnimation" onMouseExited="#LogoutAnimation2" prefHeight="74.0" prefWidth="254.0" text="Logout " textAlignment="CENTER" textFill="YELLOW">
+         <font>
+            <Font name="Comic Sans MS" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="TitleonHomeScreen" fitHeight="128.0" fitWidth="200.0" layoutX="356.0" layoutY="22.0">
+         <image>
+            <Image url="@../Images/title1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="170.0" fitWidth="254.0" layoutX="56.0" layoutY="416.0">
+         <image>
+            <Image url="@../Images/Island 1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="HeroonHomeScreen" layoutX="215.0" layoutY="407.0">
+         <image>
+            <Image url="@../Images/Hero.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="143.0" fitWidth="200.0" layoutX="377.0" layoutY="460.0">
+         <image>
+            <Image url="@../Images/Island 2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="135.0" fitWidth="162.0" layoutX="688.0" layoutY="451.0">
+         <image>
+            <Image url="@../Images/Island 3.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="OrconHomeScreen" fitHeight="150.0" fitWidth="151.0" layoutX="668.0" layoutY="357.0">
+         <image>
+            <Image url="@../Images/GreenOrc.png" />
+         </image>
+      </ImageView>
+   </children>
+   <effect>
+      <ColorAdjust />
+   </effect>
+</AnchorPane>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #a3e2e6#a3e2e6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Main">
+   <effect>
+      <ColorAdjust />
+   </effect>
+   <children>
+      <Pane layoutY="68.0" onMouseClicked="#click" prefHeight="535.0" prefWidth="901.0">
+         <children>
+            <Pane layoutY="180.0" prefHeight="286.0" prefWidth="487.0">
+               <children>
+                  <ImageView fitHeight="203.0" fitWidth="481.0" layoutX="-22.0" layoutY="98.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Images/Island 2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="Hero" fitHeight="79.0" fitWidth="72.0" layoutX="121.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Hero.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="445.0" layoutY="233.0" prefHeight="324.0" prefWidth="457.0">
+               <children>
+                  <ImageView fitHeight="318.0" fitWidth="385.0" layoutX="38.0" layoutY="-1.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Images/Island 1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Text fx:id="startPlayingTextBox" fill="#6f6f55f0" fontSmoothingType="LCD" layoutX="73.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLICK TO START PLAYING" textAlignment="CENTER" wrappingWidth="174.96900939941406">
+         <font>
+            <Font name="Comic Sans MS" size="37.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="cloud1" fitHeight="154.0" fitWidth="249.0" layoutX="-297.0" layoutY="21.0" opacity="0.89" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/Clouds.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="SettingsButton" fitHeight="63.0" fitWidth="56.0" layoutX="10.0" layoutY="8.0" onMouseClicked="#SettingsButtonClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/Settings.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="761.0" layoutY="9.0" prefHeight="59.0" prefWidth="136.0">
+         <children>
+            <ImageView fitHeight="59.0" fitWidth="60.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../Images/coin.png" />
+               </image>
+            </ImageView>
+            <Text fill="#fffdfd" layoutX="77.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font size="61.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="cloud2" fitHeight="154.0" fitWidth="249.0" layoutX="-201.0" layoutY="83.0" opacity="0.89" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/Clouds.png" />
+         </image>
+      </ImageView>
+      <Text fill="#f5f5f5" layoutX="352.0" layoutY="88.0" strokeDashOffset="2.0" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="2.0" text="0" textAlignment="CENTER" wrappingWidth="173.98992756183316">
+         <font>
+            <Font size="80.0" />
+         </font>
+         <effect>
+            <Glow level="0.44" />
+         </effect>
+      </Text>
+   </children>
+</AnchorPane>
