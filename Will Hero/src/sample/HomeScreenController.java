@@ -19,18 +19,19 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Time;
 import java.util.ResourceBundle;
+
 
 public class HomeScreenController extends Application implements Initializable {
 
+    static Stage newWindow;
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
         primaryStage.setTitle("Will Hero - Home Screen");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
-
+        newWindow = primaryStage;
         primaryStage.show();
     }
 
@@ -104,7 +105,9 @@ public class HomeScreenController extends Application implements Initializable {
 
         Scene secondScene = new Scene(secondaryLayout);
 
-        Stage newWindow = new Stage();
+        newWindow.close();
+        newWindow = new Stage();
+//        newWindow.close();
         newWindow.setTitle("Will Hero -- Login Page");
         newWindow.setScene(secondScene);
         newWindow.show();
@@ -116,7 +119,8 @@ public class HomeScreenController extends Application implements Initializable {
 
         Scene secondScene = new Scene(secondaryLayout);
 
-        Stage newWindow = new Stage();
+        newWindow.close();
+        newWindow = new Stage();
         newWindow.setTitle("Will Hero -- Saved Games");
         newWindow.setScene(secondScene);
         newWindow.show();
