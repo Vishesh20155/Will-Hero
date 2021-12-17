@@ -22,6 +22,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Main extends Application implements Initializable {
+    private boolean firstClick = true;
     private static Parent p_root;
     private static Stage myStage;
     private static Scene getCurrentScene;
@@ -67,16 +68,39 @@ public class Main extends Application implements Initializable {
     }
 
     private void introTransition(int i) {
-
         runTranslateTransition(Hero, 0, -80, 500, Timeline.INDEFINITE, true).play();
+    }
+
+    private void afterFirstClickTransition(){
+        runTranslateTransition(cloud1, 1630, 0, 7500, Timeline.INDEFINITE, false).play();
+        CommonAnimation.fade(startPlayingTextBox, 0, 2000).play();
+        runTranslateTransition(cloud2, 1610, 0, 30000, Timeline.INDEFINITE, false).play();
     }
 
     @FXML
     void click(MouseEvent event) {
-        runTranslateTransition(cloud1, 1630, 0, 7500, Timeline.INDEFINITE, false).play();
-        CommonAnimation.fade(startPlayingTextBox, 0, 2000).play();
-        runTranslateTransition(cloud2, 1610, 0, 30000, Timeline.INDEFINITE, false).play();
-        System.out.println("hello");
+        if(firstClick)
+        {
+            Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                afterFirstClickTransition();
+            }));
+            new SequentialTransition(intro).play();
+            firstClick = false;
+        }
+
+        else{
+            Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                moveHeroForward();
+            }));
+            new SequentialTransition(intro).play();
+            System.out.println("hello");
+        }
+
+    }
+
+    //This function to be placed in Hero Class
+    private void moveHeroForward(){
+        runTranslateTransition(Hero, 120, 0, 100).play();
     }
 
 

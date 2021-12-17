@@ -19,7 +19,7 @@
             <Font name="Comic Sans MS" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="LogoutonHomeScreen" alignment="CENTER" layoutX="323.0" layoutY="344.0" onMouseEntered="#LogoutAnimation" onMouseExited="#LogoutAnimation2" prefHeight="74.0" prefWidth="254.0" text="Logout " textAlignment="CENTER" textFill="YELLOW">
+      <Label fx:id="LogoutonHomeScreen" alignment="CENTER" layoutX="323.0" layoutY="344.0" onMouseClicked="#LogoutButtonClicked" onMouseEntered="#LogoutAnimation" onMouseExited="#LogoutAnimation2" prefHeight="74.0" prefWidth="254.0" text="Logout " textAlignment="CENTER" textFill="YELLOW">
          <font>
             <Font name="Comic Sans MS" size="36.0" />
          </font>
