@@ -15,24 +15,28 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLOutput;
 import java.util.ResourceBundle;
 
 
 public class HomeScreenController extends Application implements Initializable {
 
-    static Stage newWindow;
+    public static Stage stage;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
         primaryStage.setTitle("Will Hero - Home Screen");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
-        newWindow = primaryStage;
-        primaryStage.show();
+        stage = new Stage();
+        stage = primaryStage;
+        stage.show();
     }
 
 
@@ -105,12 +109,11 @@ public class HomeScreenController extends Application implements Initializable {
 
         Scene secondScene = new Scene(secondaryLayout);
 
-        newWindow.close();
-        newWindow = new Stage();
-//        newWindow.close();
-        newWindow.setTitle("Will Hero -- Login Page");
-        newWindow.setScene(secondScene);
-        newWindow.show();
+        stage.close();
+        stage = new Stage();
+        stage.setTitle("Will Hero -- Login Page");
+        stage.setScene(secondScene);
+        stage.show();
     }
 
     @FXML
@@ -119,11 +122,16 @@ public class HomeScreenController extends Application implements Initializable {
 
         Scene secondScene = new Scene(secondaryLayout);
 
-        newWindow.close();
-        newWindow = new Stage();
-        newWindow.setTitle("Will Hero -- Saved Games");
-        newWindow.setScene(secondScene);
-        newWindow.show();
+        stage.close();
+        stage.setTitle("Will Hero -- Saved Games");
+        stage.setScene(secondScene);
+        stage.show();
+    }
+
+    @FXML
+    void LogoutButtonClicked(MouseEvent event) throws IOException {
+        stage.close();
+        System.out.println("Game Closed");
     }
 
 

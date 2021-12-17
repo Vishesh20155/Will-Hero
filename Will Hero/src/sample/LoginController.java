@@ -5,12 +5,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class LoginController extends Application {
+
+    @FXML
+    private Button LoginButton;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
@@ -31,10 +36,10 @@ public class LoginController extends Application {
 
         Scene secondScene = new Scene(secondaryLayout);
 
-        Stage newWindow = new Stage();
-        newWindow.setTitle("Will Hero -- Game");
-        newWindow.setScene(secondScene);
-        newWindow.show();
+        HomeScreenController.stage.close();
+        HomeScreenController.stage.setTitle("Will Hero -- Game");
+        HomeScreenController.stage.setScene(secondScene);
+        HomeScreenController.stage.show();
     }
 
 }

@@ -1,5 +1,6 @@
 package sample;
 
+import com.sun.scenario.Settings;
 import javafx.animation.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -86,10 +87,10 @@ public class Main extends Application implements Initializable {
 
         Scene secondScene = new Scene(secondaryLayout);
 
-        Stage newWindow = new Stage();
-        newWindow.setTitle("Second Stage");
-        newWindow.setScene(secondScene);
-        newWindow.show();
+        Stage current_stage = new Stage();
+        current_stage.setTitle("Second Stage");
+        current_stage.setScene(secondScene);
+        current_stage.show();
 
     }
 

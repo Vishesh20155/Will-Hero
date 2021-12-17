@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -54,8 +55,6 @@ public class PauseMenuController extends Application implements Initializable {
 
         }));
 
-
-
         new SequentialTransition(CommonAnimation.delay(1000), HomeScreen).play();
     }
 
@@ -64,57 +63,76 @@ public class PauseMenuController extends Application implements Initializable {
     }
     @FXML
     void HomeRemoveUnderline(MouseEvent event) {
-
         Home.setUnderline(false);
-
     }
 
     @FXML
     void HomeUnderline(MouseEvent event) {
-
         Home.setUnderline(true);
-
     }
 
     @FXML
     void LoadPreviouslySavedGameRemoveUnderline(MouseEvent event) {
-
         LoadPreviouslySavedGame.setUnderline(false);
-
     }
 
     @FXML
     void LoadPreviouslySavedGameUnderline(MouseEvent event) {
-
         LoadPreviouslySavedGame.setUnderline(true);
-
     }
 
     @FXML
     void ResumeRemoveUnderline(MouseEvent event) {
-
         Resume.setUnderline(false);
-
     }
 
     @FXML
     void ResumeUnderline(MouseEvent event) {
-
         Resume.setUnderline(true);
-
     }
 
     @FXML
     void SaveCurrentGameRemoveUnderline(MouseEvent event) {
-
         SaveCurrentGame.setUnderline(false);
-
     }
 
     @FXML
     void SaveCurrentGameUnderline(MouseEvent event) {
-
         SaveCurrentGame.setUnderline(true);
+    }
 
+    @FXML
+    void HomeButtonClicked(MouseEvent event) throws IOException {
+        HomeScreenController.stage.close();
+        Parent secondaryLayout = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
+
+        Scene secondScene = new Scene(secondaryLayout);
+
+        Stage newWindow = (Stage) LoadPreviouslySavedGame.getScene().getWindow();
+        newWindow.close();
+        HomeScreenController.stage.setTitle("Will Hero - Home Screen");
+        HomeScreenController.stage.setScene(secondScene);
+        HomeScreenController.stage.show();
+    }
+
+    @FXML
+    void LoadButtonClicked(MouseEvent event) throws IOException {
+        HomeScreenController.stage.close();
+        Parent secondaryLayout = FXMLLoader.load(getClass().getResource("LoadSavedGame.fxml"));
+
+        Scene secondScene = new Scene(secondaryLayout);
+
+        Stage newWindow = (Stage) LoadPreviouslySavedGame.getScene().getWindow();
+        newWindow.close();
+
+        HomeScreenController.stage.setTitle("Will Hero -- Saved Games");
+        HomeScreenController.stage.setScene(secondScene);
+        HomeScreenController.stage.show();
+    }
+
+    @FXML
+    void ResumeClicked(MouseEvent event) {
+        Stage newWindow = (Stage) LoadPreviouslySavedGame.getScene().getWindow();
+        newWindow.close();
     }
 }
