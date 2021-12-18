@@ -14,14 +14,33 @@
       <ColorAdjust />
    </effect>
    <children>
-      <Pane layoutY="68.0" onMouseClicked="#click" prefHeight="535.0" prefWidth="901.0">
+      <Pane fx:id="pane4" layoutX="2731.0" layoutY="325.0" onMouseClicked="#click" prefHeight="273.0" prefWidth="720.0">
+         <children>
+            <ImageView fitHeight="106.0" fitWidth="193.0" layoutX="14.0" layoutY="94.0">
+               <image>
+                  <Image url="@../assets/Islands7.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="134.0" fitWidth="207.0" layoutX="255.0" layoutY="109.0">
+               <image>
+                  <Image url="@../assets/Islands5.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="115.0" fitWidth="193.0" layoutX="513.0" layoutY="143.0">
+               <image>
+                  <Image url="@../assets/Islands9.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="pane1" layoutX="9.0" layoutY="106.0" onMouseClicked="#click" prefHeight="498.0" prefWidth="888.0">
          <children>
             <ImageView fitHeight="85.0" fitWidth="252.0" layoutX="620.0" layoutY="370.0" pickOnBounds="true">
                <image>
                   <Image url="@../assets/Islands2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="103.0" fitWidth="275.0" layoutX="7.0" layoutY="364.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="island1" fitHeight="103.0" fitWidth="275.0" layoutX="7.0" layoutY="364.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/Islands2.png" />
                </image>
@@ -31,7 +50,7 @@
                   <Image url="@../Images/Hero.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="103.0" fitWidth="217.0" layoutX="328.0" layoutY="397.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+            <ImageView fitHeight="103.0" fitWidth="217.0" layoutX="328.0" layoutY="338.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
                <image>
                   <Image url="@../assets/Islands1.png" />
                </image>
@@ -80,5 +99,43 @@
             <Glow level="0.44" />
          </effect>
       </Text>
+      <Pane fx:id="pane3" layoutX="1804.0" layoutY="314.0" onMouseClicked="#click" prefHeight="262.0" prefWidth="834.0">
+         <children>
+            <ImageView fitHeight="115.0" fitWidth="217.0" layoutX="301.0" layoutY="87.0">
+               <image>
+                  <Image url="@../assets/Islands4.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="142.0" fitWidth="200.0" layoutX="594.0" layoutY="111.0">
+               <image>
+                  <Image url="@../assets/Islands6.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="134.0" fitWidth="207.0" layoutX="14.0" layoutY="103.0">
+               <image>
+                  <Image url="@../assets/Islands8.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="pane2" layoutX="945.0" layoutY="225.0" onMouseClicked="#click" prefHeight="394.0" prefWidth="748.0">
+         <children>
+            <ImageView fitHeight="134.0" fitWidth="184.0" layoutX="14.0" layoutY="215.0">
+               <image>
+                  <Image url="@../assets/Islands10.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="115.0" fitWidth="200.0" layoutX="248.0" layoutY="205.0">
+               <image>
+                  <Image url="@../assets/Islands11.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="94.0" fitWidth="200.0" layoutX="501.0" layoutY="182.0">
+               <image>
+                  <Image url="@../assets/Islands1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

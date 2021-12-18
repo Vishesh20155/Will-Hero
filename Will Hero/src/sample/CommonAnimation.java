@@ -50,6 +50,16 @@ public class CommonAnimation {
         return load;
     }
 
+    public static TranslateTransition runTranslateTransitionForHero(Node n, double x, double y, double duration) {
+        TranslateTransition load = new TranslateTransition();
+        load.setByY(y);
+//        load.setByX(x);
+        load.setToX(x);
+        load.setNode(n);
+        load.setDuration(Duration.millis(duration));
+        return load;
+    }
+
     public static TranslateTransition runTranslateTransition(Node n, double x, double y, double duration, int cycleCount, boolean reverse) {
         TranslateTransition load = new TranslateTransition();
         load.setByY(y);

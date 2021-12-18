@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -17,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import static sample.CommonAnimation.runTranslateTransition;
+import static sample.CommonAnimation.runTranslateTransitionForHero;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +34,18 @@ public class Main extends Application implements Initializable {
 
     @FXML
     private ImageView Hero;
+
+    @FXML
+    private Pane pane1;
+
+    @FXML
+    private Pane pane2;
+
+    @FXML
+    private Pane pane3;
+
+    @FXML
+    private Pane pane4;
 
     @FXML
     private ImageView island1;
@@ -84,8 +98,18 @@ public class Main extends Application implements Initializable {
         runTranslateTransition(cloud2, 1610, 0, 30000, Timeline.INDEFINITE, false).play();
     }
 
+    static int noOfClicks = 0;
+
     @FXML
     void click(MouseEvent event) {
+        System.out.print("Pane: ");
+        System.out.print(pane1.getLayoutBounds());
+        System.out.print("\n");
+//        System.out.println(island1.getY());
+        System.out.print("Hero: ");
+        System.out.print(Hero.getLayoutX());
+        System.out.print("\t");
+        System.out.println(Hero.getY());
         if(firstClick)
         {
             Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
@@ -94,15 +118,23 @@ public class Main extends Application implements Initializable {
             new SequentialTransition(intro).play();
             firstClick = false;
             createIslands();
-//            System.out.println(island1.getX());
-//            System.out.println(island1.getY());
+
         }
 
         else{
-            Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
-                moveHeroForward();
-            }));
-            new SequentialTransition(intro).play();
+            if(noOfClicks < 3) {
+                Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    moveHeroForward();
+                }));
+                new SequentialTransition(intro).play();
+                noOfClicks++;
+            }
+            else{
+                Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    moveScreen();
+                }));
+                new SequentialTransition(intro).play();
+            }
             System.out.println("hello");
         }
 
@@ -119,7 +151,16 @@ public class Main extends Application implements Initializable {
 
     //This function to be placed in Hero Class
     private void moveHeroForward(){
+        runTranslateTransitionForHero(Hero, 120, 0, 100).play();
+    }
+
+    private void moveScreen()
+    {
         runTranslateTransition(Hero, 120, 0, 100).play();
+        runTranslateTransition(pane1, -120, 0, 100).play();
+        runTranslateTransition(pane2, -120, 0, 100).play();
+        runTranslateTransition(pane3, -120, 0, 100).play();
+        runTranslateTransition(pane4, -120, 0, 100).play();
     }
 
 

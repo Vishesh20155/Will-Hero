@@ -14,14 +14,33 @@
       <ColorAdjust />
    </effect>
    <children>
-      <Pane layoutX="39.0" layoutY="106.0" onMouseClicked="#click" prefHeight="498.0" prefWidth="888.0">
+      <Pane fx:id="pane4" layoutX="2731.0" layoutY="325.0" onMouseClicked="#click" prefHeight="273.0" prefWidth="720.0">
+         <children>
+            <ImageView fitHeight="106.0" fitWidth="193.0" layoutX="14.0" layoutY="94.0">
+               <image>
+                  <Image url="@../assets/Islands7.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="134.0" fitWidth="207.0" layoutX="255.0" layoutY="109.0">
+               <image>
+                  <Image url="@../assets/Islands5.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="115.0" fitWidth="193.0" layoutX="513.0" layoutY="143.0">
+               <image>
+                  <Image url="@../assets/Islands9.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="pane1" layoutX="9.0" layoutY="106.0" onMouseClicked="#click" prefHeight="498.0" prefWidth="888.0">
          <children>
             <ImageView fitHeight="85.0" fitWidth="252.0" layoutX="620.0" layoutY="370.0" pickOnBounds="true">
                <image>
                   <Image url="@../assets/Islands2.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="103.0" fitWidth="275.0" layoutX="7.0" layoutY="364.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="island1" fitHeight="103.0" fitWidth="275.0" layoutX="7.0" layoutY="364.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/Islands2.png" />
                </image>
@@ -36,25 +55,6 @@
                   <Image url="@../assets/Islands1.png" />
                </image>
             </ImageView>
-            <Pane layoutX="485.0" layoutY="168.0" prefHeight="273.0" prefWidth="720.0">
-               <children>
-                  <ImageView fitHeight="106.0" fitWidth="193.0" layoutX="14.0" layoutY="94.0">
-                     <image>
-                        <Image url="@../assets/Islands7.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="134.0" fitWidth="207.0" layoutX="255.0" layoutY="109.0">
-                     <image>
-                        <Image url="@../assets/Islands5.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="115.0" fitWidth="193.0" layoutX="513.0" layoutY="143.0">
-                     <image>
-                        <Image url="@../assets/Islands9.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
          </children>
       </Pane>
       <Text fx:id="startPlayingTextBox" fill="#6f6f55f0" fontSmoothingType="LCD" layoutX="73.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLICK TO START PLAYING" textAlignment="CENTER" wrappingWidth="174.96900939941406">
@@ -99,7 +99,7 @@
             <Glow level="0.44" />
          </effect>
       </Text>
-      <Pane layoutX="567.0" layoutY="7.0" prefHeight="262.0" prefWidth="834.0">
+      <Pane fx:id="pane3" layoutX="1804.0" layoutY="314.0" onMouseClicked="#click" prefHeight="262.0" prefWidth="834.0">
          <children>
             <ImageView fitHeight="115.0" fitWidth="217.0" layoutX="301.0" layoutY="87.0">
                <image>
@@ -118,7 +118,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane prefHeight="394.0" prefWidth="748.0">
+      <Pane fx:id="pane2" layoutX="945.0" layoutY="225.0" onMouseClicked="#click" prefHeight="394.0" prefWidth="748.0">
          <children>
             <ImageView fitHeight="134.0" fitWidth="184.0" layoutX="14.0" layoutY="215.0">
                <image>
