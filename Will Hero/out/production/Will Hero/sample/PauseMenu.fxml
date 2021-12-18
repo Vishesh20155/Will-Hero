@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #a3dce6 #a3dce6 #a3dce6 #a3dce6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PauseMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #a3e2e6#a3e2e6 #a3e2e6#a3e2e6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PauseMenuController">
    <effect>
       <ColorAdjust />
    </effect>
@@ -20,12 +20,12 @@
       </Label>
       <VBox layoutX="214.0" layoutY="347.0" style="-fx-border-color: #c36726; -fx-border-width: 2;">
          <children>
-            <Label fx:id="LoadPreviouslySavedGame" alignment="CENTER" onMouseEntered="#LoadPreviouslySavedGameUnderline" onMouseExited="#LoadPreviouslySavedGameRemoveUnderline" prefHeight="50.0" prefWidth="457.0" text="Load previously saved game" textAlignment="CENTER" textFill="#feffff">
+            <Label fx:id="LoadPreviouslySavedGame" alignment="CENTER" onMouseClicked="#LoadButtonClicked" onMouseEntered="#LoadPreviouslySavedGameUnderline" onMouseExited="#LoadPreviouslySavedGameRemoveUnderline" prefHeight="50.0" prefWidth="457.0" text="Load previously saved game" textAlignment="CENTER" textFill="#feffff">
                <font>
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="Resume" alignment="CENTER" onMouseEntered="#ResumeUnderline" onMouseExited="#ResumeRemoveUnderline" prefHeight="47.0" prefWidth="454.0" text="Resume" textAlignment="CENTER" textFill="#feffff">
+            <Label fx:id="Resume" alignment="CENTER" onMouseClicked="#ResumeClicked" onMouseEntered="#ResumeUnderline" onMouseExited="#ResumeRemoveUnderline" prefHeight="47.0" prefWidth="454.0" text="Resume" textAlignment="CENTER" textFill="#feffff">
                <font>
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
@@ -35,7 +35,7 @@
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="Home" alignment="CENTER" onMouseEntered="#HomeUnderline" onMouseExited="#HomeRemoveUnderline" prefHeight="44.0" prefWidth="458.0" text="Home" textAlignment="CENTER" textFill="#feffff">
+            <Label fx:id="Home" alignment="CENTER" onMouseClicked="#HomeButtonClicked" onMouseEntered="#HomeUnderline" onMouseExited="#HomeRemoveUnderline" prefHeight="44.0" prefWidth="458.0" text="Home" textAlignment="CENTER" textFill="#feffff">
                <font>
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
