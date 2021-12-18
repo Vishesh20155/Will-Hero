@@ -16,26 +16,30 @@
    <children>
       <Pane layoutY="68.0" onMouseClicked="#click" prefHeight="535.0" prefWidth="901.0">
          <children>
-            <ImageView fitHeight="85.0" fitWidth="252.0" layoutX="620.0" layoutY="370.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../assets/Islands2.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="103.0" fitWidth="275.0" layoutX="7.0" layoutY="364.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Islands2.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="Hero" fitHeight="79.0" fitWidth="72.0" layoutX="103.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Hero" fitHeight="79.0" fitWidth="72.0" layoutX="120.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Hero.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="103.0" fitWidth="217.0" layoutX="328.0" layoutY="397.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
-               <image>
-                  <Image url="@../assets/Islands1.png" />
-               </image>
-            </ImageView>
+            <Pane layoutX="23.0" layoutY="285.0">
+               <children>
+                  <ImageView fx:id="island1" fitHeight="103.0" fitWidth="275.0" layoutX="303.0" layoutY="116.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Islands2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="85.0" fitWidth="252.0" layoutY="90.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../assets/Islands2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="103.0" fitWidth="217.0" layoutX="638.0" layoutY="104.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+                     <image>
+                        <Image url="@../assets/Islands1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </children>
       </Pane>
       <Text fx:id="startPlayingTextBox" fill="#6f6f55f0" fontSmoothingType="LCD" layoutX="73.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLICK TO START PLAYING" textAlignment="CENTER" wrappingWidth="174.96900939941406">
@@ -67,7 +71,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <ImageView fx:id="cloud2" fitHeight="154.0" fitWidth="249.0" layoutX="-201.0" layoutY="83.0" opacity="0.89" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cloud2" fitHeight="154.0" fitWidth="249.0" layoutX="-201.0" layoutY="82.0" opacity="0.89" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/Clouds.png" />
          </image>
@@ -80,5 +84,24 @@
             <Glow level="0.44" />
          </effect>
       </Text>
+      <Pane layoutX="826.0" layoutY="416.0">
+         <children>
+            <ImageView fx:id="island11" fitHeight="103.0" fitWidth="275.0" layoutX="303.0" layoutY="116.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Islands2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="85.0" fitWidth="252.0" layoutY="90.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assets/Islands2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="103.0" fitWidth="217.0" layoutX="638.0" layoutY="104.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+               <image>
+                  <Image url="@../assets/Islands1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

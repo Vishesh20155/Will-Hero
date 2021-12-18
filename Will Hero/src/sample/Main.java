@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
@@ -19,6 +20,7 @@ import static sample.CommonAnimation.runTranslateTransition;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Main extends Application implements Initializable {
@@ -32,6 +34,9 @@ public class Main extends Application implements Initializable {
     private ImageView Hero;
 
     @FXML
+    private ImageView island1;
+
+    @FXML
     private ImageView cloud1;
 
     @FXML
@@ -42,6 +47,8 @@ public class Main extends Application implements Initializable {
 
     @FXML
     private ImageView SettingsButton;
+
+    private Image island3;
 
 
     @Override
@@ -86,6 +93,9 @@ public class Main extends Application implements Initializable {
             }));
             new SequentialTransition(intro).play();
             firstClick = false;
+            createIslands();
+            System.out.println(island1.getX());
+            System.out.println(island1.getY());
         }
 
         else{
@@ -96,6 +106,15 @@ public class Main extends Application implements Initializable {
             System.out.println("hello");
         }
 
+    }
+
+    public void createIslands(){
+//        ArrayList<GameObject> Islands = new ArrayList<>();
+//
+//        for (int i = 0; i < 10; i++) {
+//            island3 = island1.getImage();
+////            Islands.add(new Island());
+//        }
     }
 
     //This function to be placed in Hero Class
