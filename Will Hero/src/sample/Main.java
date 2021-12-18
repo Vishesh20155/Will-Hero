@@ -94,8 +94,8 @@ public class Main extends Application implements Initializable {
             new SequentialTransition(intro).play();
             firstClick = false;
             createIslands();
-            System.out.println(island1.getX());
-            System.out.println(island1.getY());
+//            System.out.println(island1.getX());
+//            System.out.println(island1.getY());
         }
 
         else{
