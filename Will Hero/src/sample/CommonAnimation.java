@@ -53,8 +53,7 @@ public class CommonAnimation {
     public static TranslateTransition runTranslateTransitionForHero(Node n, double x, double y, double duration) {
         TranslateTransition load = new TranslateTransition();
         load.setByY(y);
-//        load.setByX(x);
-        load.setToX(x);
+        load.setByX(x);
         load.setNode(n);
         load.setDuration(Duration.millis(duration));
         return load;

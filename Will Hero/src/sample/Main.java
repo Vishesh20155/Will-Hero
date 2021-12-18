@@ -89,7 +89,7 @@ public class Main extends Application implements Initializable {
     }
 
     private void introTransition(int i) {
-        runTranslateTransition(Hero, 0, -80, 500, Timeline.INDEFINITE, true).play();
+        runTranslateTransition(Hero, 0, -120, 500, Timeline.INDEFINITE, true).play();
     }
 
     private void afterFirstClickTransition(){
@@ -102,12 +102,9 @@ public class Main extends Application implements Initializable {
 
     @FXML
     void click(MouseEvent event) {
-        System.out.print("Pane: ");
-        System.out.print(pane1.getLayoutBounds());
-        System.out.print("\n");
-//        System.out.println(island1.getY());
+
         System.out.print("Hero: ");
-        System.out.print(Hero.getLayoutX());
+        System.out.print(Hero.getTranslateX());
         System.out.print("\t");
         System.out.println(Hero.getY());
         if(firstClick)
@@ -117,7 +114,6 @@ public class Main extends Application implements Initializable {
             }));
             new SequentialTransition(intro).play();
             firstClick = false;
-            createIslands();
 
         }
 
@@ -133,10 +129,21 @@ public class Main extends Application implements Initializable {
                 Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
                     moveScreen();
                 }));
+//                Timeline intro2 = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+//                    moveHeroForward();
+//                }));
                 new SequentialTransition(intro).play();
             }
-            System.out.println("hello");
         }
+        System.out.print("Pane1: ");
+        System.out.print(pane1.getTranslateX());
+        System.out.print("\n");
+        System.out.print("Pane2: ");
+        System.out.print(pane2.getTranslateX());
+        System.out.print("\n");
+        System.out.print("Pane3: ");
+        System.out.print(pane3.getTranslateX());
+        System.out.print("\n");
 
     }
 
@@ -156,7 +163,7 @@ public class Main extends Application implements Initializable {
 
     private void moveScreen()
     {
-        runTranslateTransition(Hero, 120, 0, 100).play();
+        runTranslateTransitionForHero(Hero, 120, 0, 100).play();
         runTranslateTransition(pane1, -120, 0, 100).play();
         runTranslateTransition(pane2, -120, 0, 100).play();
         runTranslateTransition(pane3, -120, 0, 100).play();
