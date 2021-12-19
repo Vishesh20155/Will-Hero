@@ -103,13 +103,9 @@ public class MainGame extends Application implements Initializable {
     }
 
     static int noOfClicks = 0;
-    static boolean abcd = true;
 
     @FXML
     void click(MouseEvent event) throws InterruptedException {
-        synchronized (this){
-            abcd = true;
-        }
 
         if(firstClick)
         {
@@ -140,67 +136,68 @@ public class MainGame extends Application implements Initializable {
         System.out.println("Hero Translate Y: " + Hero.getTranslateY());
         System.out.println("Pane 2 Translate X: " + pane2.getTranslateX());
         System.out.println();
-        if(Hero.getTranslateX()-pane2.getTranslateX() == 86){
-            abcd = false;
-            pane2.setOnMouseClicked(e -> {
-                abcd = true;
-                System.out.println("Detected");
-            });
-
-//            runTranslateTransition(Hero, 0, 0, 1000, 1, false).play();
-            TimeUnit.MILLISECONDS.sleep(1500);
-
-            /*
-            Runnable check = new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Thread.sleep(1000);
-                        synchronized (this){
-                            if (abcd == false) {
-                                System.out.println("death");
-                                runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
-                            }
-                        }
-                    } catch (InterruptedException e) {
-                        e.getMessage();
-                        e.printStackTrace();
-                    }
-                }
-            };
-
-            Thread t1 = new Thread(check);
-            t1.start();t1.join();
-             */
-            System.out.println("abcd before if: " + abcd);
-            if(abcd == false) {
-                System.out.println("abcd: " + abcd);
-                System.out.println("death");
-                runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
-            }
+        if(Hero.getTranslateX()-pane2.getTranslateX() > 860 && Hero.getTranslateX()-pane2.getTranslateX() < 960)
+        {
+            System.out.println("death");
+            runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
         }
 
     }
 
     @FXML
-    void drag(ScrollEvent event) {
+    void click2(MouseEvent event) {
         System.out.println("DRAGGED");
 
+        if(firstClick)
+        {
+            Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                afterFirstClickTransition();
+            }));
+            new SequentialTransition(intro).play();
+            firstClick = false;
+        }
+
+        {
+            if(noOfClicks < 4) {
+                Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    moveHeroForward();
+                }));
+                new SequentialTransition(intro).play();
+                noOfClicks++;
+            }
+            else{
+                Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    moveScreen2();
+                }));
+                new SequentialTransition(intro).play();
+            }
+        }
+        System.out.println("hello");
+        System.out.println("Hero Translate X: " + Hero.getTranslateX());
+        System.out.println("Hero Translate Y: " + Hero.getTranslateY());
+        System.out.println("Pane 2 Translate X: " + pane2.getTranslateX());
+        System.out.println();
+        if(Hero.getTranslateX()-pane2.getTranslateX() > 860 && Hero.getTranslateX()-pane2.getTranslateX() < 960)
+        {
+            System.out.println("death");
+            runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
+        }
     }
 
 
     //This function to be placed in Hero Class
     private void moveHeroForward(){
         runTranslateTransitionForHero(Hero, 60, 0, 100).play();
-//        Hero.setTranslateX(120);
     }
 
     private void moveScreen()
     {
-//        runTranslateTransitionForHero(Hero, 60, 0, 100).play();
         runTranslateTransition(pane2, -120, 0, 100).play();
-//        runTranslateTransition(pane3, -120, 0, 100).play();
-//        runTranslateTransition(pane4, -120, 0, 100).play();
+    }
+
+    private void moveScreen2()
+    {
+        runTranslateTransition(pane2, -180, 0, 100).play();
     }
 
 
