@@ -14,25 +14,6 @@
       <ColorAdjust />
    </effect>
    <children>
-      <Pane fx:id="pane4" layoutX="2748.0" layoutY="25.0" prefHeight="273.0" prefWidth="720.0">
-         <children>
-            <ImageView fitHeight="106.0" fitWidth="193.0" layoutX="14.0" layoutY="94.0">
-               <image>
-                  <Image url="@../assets/Islands7.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="134.0" fitWidth="207.0" layoutX="255.0" layoutY="109.0">
-               <image>
-                  <Image url="@../assets/Islands5.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="115.0" fitWidth="193.0" layoutX="513.0" layoutY="143.0">
-               <image>
-                  <Image url="@../assets/Islands9.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
       <Text fx:id="startPlayingTextBox" fill="#6f6f55f0" fontSmoothingType="LCD" layoutX="73.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLICK TO START PLAYING" textAlignment="CENTER" wrappingWidth="174.96900939941406">
          <font>
             <Font name="Comic Sans MS" size="37.0" />
@@ -67,22 +48,14 @@
             <Image url="@../Images/Clouds.png" />
          </image>
       </ImageView>
-      <Text fill="#f5f5f5" layoutX="352.0" layoutY="88.0" onMouseClicked="#click2" strokeDashOffset="2.0" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="2.0" text="0" textAlignment="CENTER" wrappingWidth="173.98992756183316">
-         <font>
-            <Font size="80.0" />
-         </font>
-         <effect>
-            <Glow level="0.44" />
-         </effect>
-      </Text>
-      <Pane fx:id="pane2" layoutY="64.0" onMouseClicked="#click" prefHeight="536.0" prefWidth="1622.0">
+      <Pane fx:id="pane2" layoutY="64.0" minWidth="5000.0" onMouseClicked="#click" prefHeight="536.0" prefWidth="5170.0">
          <children>
             <ImageView fitHeight="134.0" fitWidth="200.0" translateX="850.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands10.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="115.0" fitWidth="200.0" translateX="1450.0" translateY="370.0">
+            <ImageView fitHeight="115.0" fitWidth="350.0" translateX="1450.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands11.png" />
                </image>
@@ -97,12 +70,12 @@
                   <Image url="@../assets/Islands8.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="115.0" fitWidth="150.0" translateX="2300.0" translateY="370.0">
+            <ImageView fitHeight="115.0" fitWidth="250.0" translateX="2300.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands4.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="142.0" fitWidth="200.0" translateX="2550.0" translateY="370.0">
+            <ImageView fitHeight="142.0" fitWidth="200.0" translateX="2600.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands6.png" />
                </image>
@@ -117,22 +90,45 @@
                   <Image url="@../assets/Islands2.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="85.0" fitWidth="300.0" pickOnBounds="true" translateX="2900.0" translateY="370.0">
+               <image>
+                  <Image url="@../assets/Islands2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="island2" fitHeight="103.0" fitWidth="500.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" translateX="3300.0" translateY="370.0">
+               <image>
+                  <Image url="@../assets/Islands1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="106.0" fitWidth="300.0" translateX="3850.0" translateY="370.0">
+               <image>
+                  <Image url="@../assets/Islands7.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="134.0" fitWidth="250.0" translateX="4250.0" translateY="370.0">
+               <image>
+                  <Image url="@../assets/Islands5.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="115.0" fitWidth="500.0" translateX="4600.0" translateY="370.0">
+               <image>
+                  <Image url="@../assets/Islands9.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <ImageView fx:id="island2" fitHeight="103.0" fitWidth="217.0" layoutX="-119.0" layoutY="347.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" x="238.0" y="364.0">
-         <image>
-            <Image url="@../assets/Islands1.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="85.0" fitWidth="252.0" layoutX="463.0" layoutY="683.0" pickOnBounds="true">
-         <image>
-            <Image url="@../assets/Islands2.png" />
-         </image>
-      </ImageView>
       <ImageView fx:id="Hero" fitHeight="79.0" fitWidth="70.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true" translateX="120.0" translateY="365.0">
          <image>
             <Image url="@../Images/Hero.png" />
          </image>
       </ImageView>
+      <Text fill="#f5f5f5" layoutX="352.0" layoutY="88.0" onMouseClicked="#click2" strokeDashOffset="2.0" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="2.0" text="0" textAlignment="CENTER" wrappingWidth="173.98992756183316">
+         <font>
+            <Font size="80.0" />
+         </font>
+         <effect>
+            <Glow level="0.44" />
+         </effect>
+      </Text>
    </children>
 </AnchorPane>

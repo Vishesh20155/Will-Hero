@@ -45,8 +45,6 @@ public class MainGame extends Application implements Initializable {
 //    @FXML
 //    private Pane pane3;
 
-//    @FXML
-//    private Pane pane4;
 
     @FXML
     private ImageView island1;
@@ -104,6 +102,11 @@ public class MainGame extends Application implements Initializable {
 
     static int noOfClicks = 0;
 
+    boolean checkFall(float x){
+        //COMPLETE FUNCTION
+        return true;        //return true if x lies in any of the coordinates lie in
+    }
+
     @FXML
     void click(MouseEvent event) throws InterruptedException {
 
@@ -136,7 +139,7 @@ public class MainGame extends Application implements Initializable {
         System.out.println("Hero Translate Y: " + Hero.getTranslateY());
         System.out.println("Pane 2 Translate X: " + pane2.getTranslateX());
         System.out.println();
-        if(Hero.getTranslateX()-pane2.getTranslateX() > 860 && Hero.getTranslateX()-pane2.getTranslateX() < 960)
+        if(Hero.getTranslateX()-pane2.getTranslateX() > 870 && Hero.getTranslateX()-pane2.getTranslateX() <= 960)
         {
             System.out.println("death");
             runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
@@ -177,7 +180,7 @@ public class MainGame extends Application implements Initializable {
         System.out.println("Hero Translate Y: " + Hero.getTranslateY());
         System.out.println("Pane 2 Translate X: " + pane2.getTranslateX());
         System.out.println();
-        if(Hero.getTranslateX()-pane2.getTranslateX() > 860 && Hero.getTranslateX()-pane2.getTranslateX() < 960)
+        if(Hero.getTranslateX()-pane2.getTranslateX() > 860 && Hero.getTranslateX()-pane2.getTranslateX() <= 960)
         {
             System.out.println("death");
             runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
