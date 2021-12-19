@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class Main extends Application implements Initializable {
     private boolean firstClick = true;
@@ -31,6 +32,7 @@ public class Main extends Application implements Initializable {
     private static Stage myStage;
     private static Scene getCurrentScene;
     private static LoadSavedGameController currentSceneController;
+    private Hero hero;
 
     @FXML
     private ImageView Hero;
@@ -41,14 +43,17 @@ public class Main extends Application implements Initializable {
     @FXML
     private Pane pane2;
 
-    @FXML
-    private Pane pane3;
+//    @FXML
+//    private Pane pane3;
 
-    @FXML
-    private Pane pane4;
+//    @FXML
+//    private Pane pane4;
 
     @FXML
     private ImageView island1;
+
+    @FXML
+    private ImageView island2;
 
     @FXML
     private ImageView cloud1;
@@ -99,14 +104,14 @@ public class Main extends Application implements Initializable {
     }
 
     static int noOfClicks = 0;
+    static boolean abcd = true;
 
     @FXML
-    void click(MouseEvent event) {
+    void click(MouseEvent event) throws InterruptedException {
+        synchronized (this){
+            abcd = true;
+        }
 
-        System.out.print("Hero: ");
-        System.out.print(Hero.getTranslateX());
-        System.out.print("\t");
-        System.out.println(Hero.getY());
         if(firstClick)
         {
             Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
@@ -114,11 +119,10 @@ public class Main extends Application implements Initializable {
             }));
             new SequentialTransition(intro).play();
             firstClick = false;
-
         }
 
-        else{
-            if(noOfClicks < 3) {
+        {
+            if(noOfClicks < 4) {
                 Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
                     moveHeroForward();
                 }));
@@ -129,45 +133,73 @@ public class Main extends Application implements Initializable {
                 Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
                     moveScreen();
                 }));
-//                Timeline intro2 = new Timeline(new KeyFrame(Duration.millis(1), e -> {
-//                    moveHeroForward();
-//                }));
                 new SequentialTransition(intro).play();
             }
         }
-        System.out.print("Pane1: ");
-        System.out.print(pane1.getTranslateX());
-        System.out.print("\n");
-        System.out.print("Pane2: ");
-        System.out.print(pane2.getTranslateX());
-        System.out.print("\n");
-        System.out.print("Pane3: ");
-        System.out.print(pane3.getTranslateX());
-        System.out.print("\n");
+        System.out.println("Hero Translate X: " + Hero.getTranslateX());
+        System.out.println("Hero Translate Y: " + Hero.getTranslateY());
+        System.out.println("Pane 2 Translate X: " + pane2.getTranslateX());
+        System.out.println();
+        if(Hero.getTranslateX()-pane2.getTranslateX() == 86){
+            abcd = false;
+            pane2.setOnMouseClicked(e -> {
+                abcd = true;
+                System.out.println("Detected");
+            });
 
-    }
+            pane1.setOnMouseClicked(e -> {
+                abcd = true;
+                System.out.println("Detected");
+            });
 
-    public void createIslands(){
-//        ArrayList<GameObject> Islands = new ArrayList<>();
-//
-//        for (int i = 0; i < 10; i++) {
-//            island3 = island1.getImage();
-////            Islands.add(new Island());
-//        }
+//            runTranslateTransition(Hero, 0, 0, 1000, 1, false).play();
+            TimeUnit.MILLISECONDS.sleep(1500);
+
+            /*
+            Runnable check = new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(1000);
+                        synchronized (this){
+                            if (abcd == false) {
+                                System.out.println("death");
+                                runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
+                            }
+                        }
+                    } catch (InterruptedException e) {
+                        e.getMessage();
+                        e.printStackTrace();
+                    }
+                }
+            };
+
+            Thread t1 = new Thread(check);
+            t1.start();t1.join();
+             */
+            System.out.println("abcd before if: " + abcd);
+            if(abcd == false) {
+                System.out.println("abcd: " + abcd);
+                System.out.println("death");
+                runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
+            }
+        }
+
     }
 
     //This function to be placed in Hero Class
     private void moveHeroForward(){
-        runTranslateTransitionForHero(Hero, 120, 0, 100).play();
+        runTranslateTransitionForHero(Hero, 60, 0, 100).play();
+//        Hero.setTranslateX(120);
     }
 
     private void moveScreen()
     {
-        runTranslateTransitionForHero(Hero, 120, 0, 100).play();
+//        runTranslateTransitionForHero(Hero, 60, 0, 100).play();
         runTranslateTransition(pane1, -120, 0, 100).play();
         runTranslateTransition(pane2, -120, 0, 100).play();
-        runTranslateTransition(pane3, -120, 0, 100).play();
-        runTranslateTransition(pane4, -120, 0, 100).play();
+//        runTranslateTransition(pane3, -120, 0, 100).play();
+//        runTranslateTransition(pane4, -120, 0, 100).play();
     }
 
 
