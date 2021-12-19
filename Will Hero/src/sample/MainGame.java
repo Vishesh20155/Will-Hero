@@ -29,6 +29,62 @@ import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 public class MainGame extends Application implements Initializable {
+
+    private ArrayList<Position> AbyssStartingPostion = new ArrayList<Position>();
+    private ArrayList<Position> AbyssEndingPosition = new ArrayList<Position>();
+
+
+
+    private void InitializingAbyssStartingandEndingPosition(){
+        Position p1_s = new Position(800,0);
+        Position p1_e = new Position(850,0);
+        AbyssStartingPostion.add(p1_s);
+        AbyssEndingPosition.add(p1_e);
+        Position p2_s = new Position(1050,0);
+        Position p2_e = new Position(1150,0);
+        AbyssStartingPostion.add(p2_s);
+        AbyssEndingPosition.add(p2_e);
+        Position p3_s = new Position(1350,0);
+        Position p3_e = new Position(1450,0);
+        AbyssStartingPostion.add(p3_s);
+        AbyssEndingPosition.add(p3_e);
+        Position p4_s = new Position(1800,0);
+        Position p4_e = new Position(1900,0);
+        AbyssStartingPostion.add(p4_s);
+        AbyssEndingPosition.add(p4_e);
+        Position p5_s = new Position(2250,0);
+        Position p5_e = new Position(2300,0);
+        AbyssStartingPostion.add(p5_s);
+        AbyssEndingPosition.add(p5_e);
+        Position p6_s = new Position(2550,0);
+        Position p6_e = new Position(2600,0);
+        AbyssStartingPostion.add(p6_s);
+        AbyssEndingPosition.add(p6_e);
+        Position p7_s = new Position(2800,0);
+        Position p7_e = new Position(2900,0);
+        AbyssStartingPostion.add(p7_s);
+        AbyssEndingPosition.add(p7_e);
+        Position p8_s = new Position(3200,0);
+        Position p8_e = new Position(3300,0);
+        AbyssStartingPostion.add(p8_s);
+        AbyssEndingPosition.add(p8_e);
+        Position p9_s = new Position(3800,0);
+        Position p9_e = new Position(3850,0);
+        AbyssStartingPostion.add(p9_s);
+        AbyssEndingPosition.add(p9_e);
+        Position p10_s = new Position(4150,0);
+        Position p10_e = new Position(4250,0);
+        AbyssStartingPostion.add(p10_s);
+        AbyssEndingPosition.add(p10_e);
+        Position p11_s = new Position(4500,0);
+        Position p11_e = new Position(4600,0);
+        AbyssStartingPostion.add(p11_s);
+        AbyssEndingPosition.add(p11_e);
+
+
+    }
+
+
     private boolean firstClick = true;
     private static Parent p_root;
     private static Stage myStage;
@@ -103,8 +159,15 @@ public class MainGame extends Application implements Initializable {
     static int noOfClicks = 0;
 
     boolean checkFall(float x){
-        //COMPLETE FUNCTION
-        return true;        //return true if x lies in any of the coordinates lie in
+        for(int i = 0 ; i <AbyssStartingPostion.size() ; i++){
+            if(x>AbyssStartingPostion.get(i).getX()){
+                if (x>AbyssStartingPostion.get(i).getX() && x<AbyssEndingPosition.get(i).getX()){
+                    return true;
+                }
+            }
+
+        }
+        return false;
     }
 
     @FXML
@@ -117,6 +180,7 @@ public class MainGame extends Application implements Initializable {
             }));
             new SequentialTransition(intro).play();
             firstClick = false;
+            InitializingAbyssStartingandEndingPosition();
         }
 
         {

@@ -1,8 +1,14 @@
 package sample;
 
+import javafx.geometry.Pos;
+
 public class Position {
     private float x;
     private float y;
+    public Position(float _x , float _y){
+        x = _x;
+        y = _y;
+    }
 
     protected void setX(float x_cordinate){
         this.x = x_cordinate;
