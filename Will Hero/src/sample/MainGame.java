@@ -5,6 +5,7 @@ import javafx.animation.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -93,7 +94,19 @@ public class MainGame extends Application implements Initializable {
     private ImageView Hero;
 
     @FXML
+    private Group GroupOrc1;
+
+    @FXML
+    private Group GroupOrc2;
+
+    @FXML
     private Pane pane2;
+
+    @FXML
+    private ImageView Orc1;
+
+    @FXML
+    private ImageView Orc2;
 
 //    @FXML
 //    private Pane pane3;
@@ -122,6 +135,25 @@ public class MainGame extends Application implements Initializable {
     @FXML
     private Text ScoreLabel;
 
+    @FXML
+    private ImageView Orc3;
+
+    @FXML
+    private ImageView Orc4;
+
+    @FXML
+    private ImageView Orc5;
+
+    @FXML
+    private ImageView Orc6;
+
+    @FXML
+    private Group GroupOrc3;
+
+
+    @FXML
+    private ImageView Orc7;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -148,6 +180,17 @@ public class MainGame extends Application implements Initializable {
 
     private void introTransition(int i) {
         runTranslateTransition(Hero, 0, -120, 500, Timeline.INDEFINITE, true).play();
+        runTranslateTransition(Orc1, 0, -100, 600, Timeline.INDEFINITE, true).play();
+        runTranslateTransition(Orc2, 0, -100, 600, Timeline.INDEFINITE, true).play();
+        runTranslateTransition(GroupOrc1, 0, -100, 600, Timeline.INDEFINITE, true).play();
+        runTranslateTransition(GroupOrc2, 0, -100, 600, Timeline.INDEFINITE, true).play();
+        runTranslateTransition(Orc3, 0, -100, 600, Timeline.INDEFINITE, true).play();
+        runTranslateTransition(Orc4, 0, -100, 600, Timeline.INDEFINITE, true).play();
+        runTranslateTransition(Orc5, 0, -100, 600, Timeline.INDEFINITE, true).play();
+        runTranslateTransition(Orc6, 0, -100, 600, Timeline.INDEFINITE, true).play();
+        runTranslateTransition(Orc7, 0, -100, 600, Timeline.INDEFINITE, true).play();
+        runTranslateTransition(GroupOrc3, 0, -100, 600, Timeline.INDEFINITE, true).play();
+
     }
 
     private void afterFirstClickTransition(){
@@ -170,11 +213,36 @@ public class MainGame extends Application implements Initializable {
         return false;
     }
 
+    void checkOrc(){
+        if(pane2.getTranslateX() <= -120 && pane2.getTranslateX() >= -180) {
+            System.out.println("check orc function");
+            if(Orc1.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(Orc1, 6000, 0, 2000).play();
+            return;
+        }
+
+        if(Hero.getTranslateX()==300) {
+            System.out.println("check orc2 function");
+            if(Orc2.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(Orc2, 6000, 0, 2000).play();
+            return;
+        }
+
+        if(pane2.getTranslateX() <= -1020 && pane2.getTranslateX() >= -1080) {
+
+        }
+    }
+
     private static int score = 0;
 
 
     @FXML
     void click(MouseEvent event) throws InterruptedException {
+        printCoordinateDetails();
 
         score++;
 
@@ -205,15 +273,12 @@ public class MainGame extends Application implements Initializable {
                 new SequentialTransition(intro).play();
             }
         }
-        System.out.println("hello");
-        System.out.println("Hero Translate X: " + Hero.getTranslateX());
-        System.out.println("Hero Translate Y: " + Hero.getTranslateY());
-        System.out.println("Pane 2 Translate X: " + pane2.getTranslateX());
-        System.out.println();
-        if(checkFall((float) (Hero.getTranslateX()-pane2.getTranslateX())))
-        {
-            System.out.println("death");
-            runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
+
+        if(checkFall((float) (Hero.getTranslateX()-pane2.getTranslateX()))) {
+            death();
+        }
+        else {
+            checkOrc();
         }
 
     }
@@ -221,6 +286,7 @@ public class MainGame extends Application implements Initializable {
     @FXML
     void click2(MouseEvent event) {
         System.out.println("DRAGGED");
+        printCoordinateDetails();
 
         score+=2;
 
@@ -251,15 +317,12 @@ public class MainGame extends Application implements Initializable {
                 new SequentialTransition(intro).play();
             }
         }
-        System.out.println("hello");
-        System.out.println("Hero Translate X: " + Hero.getTranslateX());
-        System.out.println("Hero Translate Y: " + Hero.getTranslateY());
-        System.out.println("Pane 2 Translate X: " + pane2.getTranslateX());
-        System.out.println();
-        if(checkFall((float) (Hero.getTranslateX()-pane2.getTranslateX())))
-        {
-            System.out.println("death");
-            runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
+
+        if(checkFall((float) (Hero.getTranslateX()-pane2.getTranslateX()))){
+            death();
+        }
+        else{
+            checkOrc();
         }
     }
 
@@ -292,6 +355,19 @@ public class MainGame extends Application implements Initializable {
         current_stage.setScene(secondScene);
         current_stage.show();
 
+    }
+
+    private void printCoordinateDetails(){
+        System.out.println("hello");
+        System.out.println("Hero Translate X: " + Hero.getTranslateX());
+        System.out.println("Hero Translate Y: " + Hero.getTranslateY());
+        System.out.println("Pane 2 Translate X: " + pane2.getTranslateX());
+        System.out.println();
+    }
+
+    private void death(){
+        System.out.println("death");
+        runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
     }
 
 }

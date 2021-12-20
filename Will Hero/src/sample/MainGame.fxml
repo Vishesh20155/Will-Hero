@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Group?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
@@ -115,11 +116,83 @@
                   <Image url="@../assets/Islands9.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="65.0" fitWidth="66.0" translateX="549.0" translateY="305.0">
+            <ImageView fx:id="Orc1" fitHeight="65.0" fitWidth="66.0" translateX="600.0" translateY="305.0">
                <image>
                   <Image url="@../assets/Orc1.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="Orc2" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="400.0" translateY="305.0">
+               <image>
+                  <Image url="@../assets/RedOrcBoss.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Orc3" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="2400.0" translateY="315.0">
+               <image>
+                  <Image url="@../assets/RedOrc1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Orc4" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="3040.0" translateY="305.0">
+               <image>
+                  <Image url="@../assets/RedOrc2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Orc5" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="3450.0" translateY="305.0">
+               <image>
+                  <Image url="@../assets/Orc3.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Orc6" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="3630.0" translateY="310.0">
+               <image>
+                  <Image url="@../assets/RedOrc1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Orc7" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="3960.0" translateY="305.0">
+               <image>
+                  <Image url="@../assets/Orc2.png" />
+               </image>
+            </ImageView>
+            <Group fx:id="GroupOrc1" translateX="1570.0" translateY="325.0">
+               <children>
+                  <ImageView fitHeight="65.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/RedOrcBoss.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="65.0" fitWidth="45.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/RedOrcBoss.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Group>
+            <Group fx:id="GroupOrc2" translateX="2050.0" translateY="325.0">
+               <children>
+                  <ImageView fitHeight="65.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Orc5.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="65.0" fitWidth="45.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/Orc5.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Group>
+            <Group fx:id="GroupOrc3" translateX="4800.0" translateY="320.0">
+               <children>
+                  <ImageView fitHeight="65.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/RedOrcBoss.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="65.0" fitWidth="45.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/RedOrcBoss.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Group>
          </children>
       </Pane>
       <ImageView fx:id="Hero" fitHeight="79.0" fitWidth="70.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true" translateX="120.0" translateY="365.0">
