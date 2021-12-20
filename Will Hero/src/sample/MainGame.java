@@ -36,50 +36,47 @@ public class MainGame extends Application implements Initializable {
 
 
     private void InitializingAbyssStartingandEndingPosition(){
-        Position p1_s = new Position(800,0);
-        Position p1_e = new Position(850,0);
+        Position p1_s = new Position(860,0);
+        Position p1_e = new Position(960,0);
         AbyssStartingPostion.add(p1_s);
         AbyssEndingPosition.add(p1_e);
-        Position p2_s = new Position(1050,0);
-        Position p2_e = new Position(1150,0);
+        Position p2_s = new Position(1160,0);
+        Position p2_e = new Position(1261,0);
         AbyssStartingPostion.add(p2_s);
         AbyssEndingPosition.add(p2_e);
-        Position p3_s = new Position(1350,0);
-        Position p3_e = new Position(1450,0);
+        Position p3_s = new Position(1610,0);
+        Position p3_e = new Position(1711,0);
         AbyssStartingPostion.add(p3_s);
         AbyssEndingPosition.add(p3_e);
-        Position p4_s = new Position(1800,0);
-        Position p4_e = new Position(1900,0);
+        Position p4_s = new Position(2060,0);
+        Position p4_e = new Position(2110,0);
         AbyssStartingPostion.add(p4_s);
         AbyssEndingPosition.add(p4_e);
-        Position p5_s = new Position(2250,0);
-        Position p5_e = new Position(2300,0);
+        Position p5_s = new Position(2360,0);
+        Position p5_e = new Position(2410,0);
         AbyssStartingPostion.add(p5_s);
         AbyssEndingPosition.add(p5_e);
-        Position p6_s = new Position(2550,0);
-        Position p6_e = new Position(2600,0);
+        Position p6_s = new Position(2610,0);
+        Position p6_e = new Position(2711,0);
         AbyssStartingPostion.add(p6_s);
         AbyssEndingPosition.add(p6_e);
-        Position p7_s = new Position(2800,0);
-        Position p7_e = new Position(2900,0);
+        Position p7_s = new Position(3010,0);
+        Position p7_e = new Position(3111,0);
         AbyssStartingPostion.add(p7_s);
         AbyssEndingPosition.add(p7_e);
-        Position p8_s = new Position(3200,0);
-        Position p8_e = new Position(3300,0);
+        Position p8_s = new Position(3610,0);
+        Position p8_e = new Position(3660,0);
         AbyssStartingPostion.add(p8_s);
         AbyssEndingPosition.add(p8_e);
-        Position p9_s = new Position(3800,0);
-        Position p9_e = new Position(3850,0);
+        Position p9_s = new Position(3960,0);
+        Position p9_e = new Position(4061,0);
         AbyssStartingPostion.add(p9_s);
         AbyssEndingPosition.add(p9_e);
-        Position p10_s = new Position(4150,0);
-        Position p10_e = new Position(4250,0);
+        Position p10_s = new Position(4310,0);
+        Position p10_e = new Position(4411,0);
         AbyssStartingPostion.add(p10_s);
         AbyssEndingPosition.add(p10_e);
-        Position p11_s = new Position(4500,0);
-        Position p11_e = new Position(4600,0);
-        AbyssStartingPostion.add(p11_s);
-        AbyssEndingPosition.add(p11_e);
+
 
 
     }
@@ -122,6 +119,9 @@ public class MainGame extends Application implements Initializable {
 
     private Image island3;
 
+    @FXML
+    private Text ScoreLabel;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -161,7 +161,7 @@ public class MainGame extends Application implements Initializable {
     boolean checkFall(float x){
         for(int i = 0 ; i <AbyssStartingPostion.size() ; i++){
             if(x>AbyssStartingPostion.get(i).getX()){
-                if (x>AbyssStartingPostion.get(i).getX() && x<AbyssEndingPosition.get(i).getX()){
+                if (x<AbyssEndingPosition.get(i).getX()){
                     return true;
                 }
             }
@@ -170,8 +170,15 @@ public class MainGame extends Application implements Initializable {
         return false;
     }
 
+    private static int score = 0;
+
+
     @FXML
     void click(MouseEvent event) throws InterruptedException {
+
+        score++;
+
+        ScoreLabel.setText(Integer.toString(score));
 
         if(firstClick)
         {
@@ -203,7 +210,7 @@ public class MainGame extends Application implements Initializable {
         System.out.println("Hero Translate Y: " + Hero.getTranslateY());
         System.out.println("Pane 2 Translate X: " + pane2.getTranslateX());
         System.out.println();
-        if(Hero.getTranslateX()-pane2.getTranslateX() > 870 && Hero.getTranslateX()-pane2.getTranslateX() <= 960)
+        if(checkFall((float) (Hero.getTranslateX()-pane2.getTranslateX())))
         {
             System.out.println("death");
             runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
@@ -215,11 +222,16 @@ public class MainGame extends Application implements Initializable {
     void click2(MouseEvent event) {
         System.out.println("DRAGGED");
 
+        score+=2;
+
+        ScoreLabel.setText(Integer.toString(score));
+
         if(firstClick)
         {
             Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
                 afterFirstClickTransition();
             }));
+            InitializingAbyssStartingandEndingPosition();
             new SequentialTransition(intro).play();
             firstClick = false;
         }
@@ -244,7 +256,7 @@ public class MainGame extends Application implements Initializable {
         System.out.println("Hero Translate Y: " + Hero.getTranslateY());
         System.out.println("Pane 2 Translate X: " + pane2.getTranslateX());
         System.out.println();
-        if(Hero.getTranslateX()-pane2.getTranslateX() > 860 && Hero.getTranslateX()-pane2.getTranslateX() <= 960)
+        if(checkFall((float) (Hero.getTranslateX()-pane2.getTranslateX())))
         {
             System.out.println("death");
             runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
