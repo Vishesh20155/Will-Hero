@@ -232,10 +232,112 @@ public class MainGame extends Application implements Initializable {
             return;
         }
 
-        if(pane2.getTranslateX() <= -1020 && pane2.getTranslateX() >= -1080) {
+        // Changed the group orc 1 to a better coordinate
+
+        if(pane2.getTranslateX() <= -1040 && pane2.getTranslateX() >= -1140) {
+
+            System.out.println("check GroupOrc1 function");
+            if(GroupOrc1.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(GroupOrc1, 6000, 0, 2000).play();
+            return;
 
         }
+
+        if(pane2.getTranslateX() <= -1040 && pane2.getTranslateX() >= -1140) {
+
+            System.out.println("check GroupOrc2 function");
+            if(GroupOrc2.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(GroupOrc2, 6000, 0, 2000).play();
+            return;
+
+        }
+        if(pane2.getTranslateX() <= -1540 && pane2.getTranslateX() >= -1640) {
+
+            System.out.println("check GroupOrc2 function");
+            if(GroupOrc2.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(GroupOrc2, 6000, 0, 2000).play();
+            return;
+
+        }
+
+        if(pane2.getTranslateX() <= -1860 && pane2.getTranslateX() >= -1960) {
+
+            System.out.println("check Orc3 function");
+            if(Orc3.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(Orc3, 6000, 0, 2000).play();
+            return;
+
+        }
+        if(pane2.getTranslateX() <= -2500 && pane2.getTranslateX() >= -2600) {
+
+            System.out.println("check Orc4 function");
+            if(Orc4.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(Orc4, 6000, 0, 2000).play();
+            return;
+
+        }
+
+        if(pane2.getTranslateX() <= -2900 && pane2.getTranslateX() >= -3020) {
+
+            System.out.println("check Orc5 function");
+            if(Orc5.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(Orc5, 6000, 0, 2000).play();
+            return;
+
+        }
+
+        if(pane2.getTranslateX() <= -3100 && pane2.getTranslateX() >= -3200) {
+
+            System.out.println("check Orc6 function");
+            if(Orc6.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(Orc6, 6000, 0, 2000).play();
+            return;
+
+        }
+
+        if(pane2.getTranslateX() <= -3400 && pane2.getTranslateX() >= -3500) {
+
+            System.out.println("check Orc7 function");
+            if(Orc7.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(Orc7, 6000, 0, 2000).play();
+            return;
+
+        }
+
+        if(pane2.getTranslateX() <= -4280 && pane2.getTranslateX() >= -4400) {
+
+            System.out.println("check GroupOrc3 function");
+            if(GroupOrc3.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(GroupOrc3, 6000, 0, 2000).play();
+            return;
+
+        }
+
+
+
+
+
+
     }
+
 
     private static int score = 0;
 

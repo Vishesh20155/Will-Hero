@@ -153,7 +153,7 @@
             </ImageView>
             <Group fx:id="GroupOrc1" translateX="1570.0" translateY="325.0">
                <children>
-                  <ImageView fitHeight="65.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="GroupOrc1" fitHeight="65.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/RedOrcBoss.png" />
                      </image>
@@ -193,6 +193,26 @@
                   </ImageView>
                </children>
             </Group>
+            <ImageView fitHeight="56.0" fitWidth="75.0" layoutX="894.0" layoutY="314.0">
+               <image>
+                  <Image url="@../assets/ChestClosed.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="56.0" fitWidth="75.0" layoutX="2600.0" layoutY="314.0">
+               <image>
+                  <Image url="@../assets/ChestClosed.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="56.0" fitWidth="75.0" layoutX="4258.0" layoutY="312.0">
+               <image>
+                  <Image url="@../assets/ChestClosed.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="56.0" fitWidth="84.0" layoutX="1166.0" layoutY="313.0">
+               <image>
+                  <Image url="@../Images/chest.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <ImageView fx:id="Hero" fitHeight="79.0" fitWidth="70.0" onMouseClicked="#click" pickOnBounds="true" preserveRatio="true" translateX="120.0" translateY="365.0">
