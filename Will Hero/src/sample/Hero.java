@@ -8,13 +8,27 @@ public class Hero extends GameObject {
     private Helmet helmet;
 
     public Hero(){
-        this.position.setY(0);
-        this.position.setX(0);
+        this.coins = 0;
     }
 
     public void updatePosition(float x, float y){
-        this.position.setX(x + this.position.getX());
-        this.position.setY(y + this.position.getY());
+
+    }
+
+    protected void setWeapon(Weapon w){
+        this.weapon = w;
+    }
+
+    protected void updateCoins(int c){
+        this.coins += c;
+    }
+
+    protected int getCoins(){
+        return this.coins;
+    }
+
+    protected Weapon getWeapon(){
+        return this.weapon;
     }
 
 }

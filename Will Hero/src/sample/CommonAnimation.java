@@ -70,6 +70,14 @@ public class CommonAnimation {
         return load;
     }
 
+    public static RotateTransition runRotateTransition(Node n, double a, double duration) {
+        RotateTransition load = new RotateTransition();
+        load.setNode(n);
+        load.setByAngle(a);
+        load.setDuration(Duration.millis(duration));
+        return load;
+    }
+
     public static Timeline delay(double time)
     {
         return new Timeline(new KeyFrame(Duration.millis(time), e -> { }));

@@ -20,14 +20,14 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-import static sample.CommonAnimation.runTranslateTransition;
-import static sample.CommonAnimation.runTranslateTransitionForHero;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
+
+import static sample.CommonAnimation.*;
 
 public class MainGame extends Application implements Initializable {
 
@@ -42,7 +42,7 @@ public class MainGame extends Application implements Initializable {
         AbyssStartingPostion.add(p1_s);
         AbyssEndingPosition.add(p1_e);
         Position p2_s = new Position(1160,0);
-        Position p2_e = new Position(1261,0);
+        Position p2_e = new Position(1260,0);
         AbyssStartingPostion.add(p2_s);
         AbyssEndingPosition.add(p2_e);
         Position p3_s = new Position(1610,0);
@@ -88,10 +88,23 @@ public class MainGame extends Application implements Initializable {
     private static Stage myStage;
     private static Scene getCurrentScene;
     private static LoadSavedGameController currentSceneController;
-    private Hero hero;
+    private Hero heroObject = new Hero();
+    private Player player = new Player();
+    private Sword sword1 = new Sword();
+    private Knife knife1 = new Knife();
+    private boolean groupOrc1Dead = false;
 
     @FXML
-    private ImageView Hero;
+    private Group Hero;
+
+    @FXML
+    private ImageView HeroOnly;
+
+    @FXML
+    private ImageView Sword;
+
+    @FXML
+    private ImageView Knife;
 
     @FXML
     private Group GroupOrc1;
@@ -154,6 +167,41 @@ public class MainGame extends Application implements Initializable {
     @FXML
     private ImageView Orc7;
 
+    @FXML
+    private Group CoinGroup;
+
+    @FXML
+    private Text CoinNumberText;
+
+    @FXML
+    private Text displayText;
+
+    @FXML
+    private ImageView chest1closed;
+
+    @FXML
+    private ImageView chest1open;
+
+
+    @FXML
+    private ImageView chest2closed;
+
+    @FXML
+    private ImageView chest2open;
+
+    @FXML
+    private ImageView chest3closed;
+
+    @FXML
+    private ImageView chest3open;
+
+    @FXML
+    private ImageView chest4closed;
+
+    @FXML
+    private ImageView chest4open;
+
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -213,6 +261,74 @@ public class MainGame extends Application implements Initializable {
         return false;
     }
 
+    void checkChest(){
+        if(pane2.getTranslateX() == -660 || pane2.getTranslateX() == -600){
+            fade(chest1closed, 0, 500).play();
+            fade(chest1open, 1, 500).play();
+            heroObject.setWeapon(knife1);
+            displayText.setText("Equipped Knife");
+            fade(displayText, 1, 1000, true, 4).play();
+            Knife.setOpacity(1);
+            return;
+        }
+
+        if(pane2.getTranslateX() == -1500 ||pane2.getTranslateX() == -1560 ){
+            fade(chest2closed, 0, 500).play();
+            fade(chest2open, 1, 500).play();
+            heroObject.setWeapon(sword1);
+            Knife.setOpacity(0);
+            sword1.hit(Sword);
+            displayText.setText("Equipped Sword");
+            fade(displayText, 1, 1000, true, 4).play();
+            Sword.setOpacity(1);
+            runTranslateTransition(GroupOrc2, 6000, 0, 2000).play();
+            return;
+        }
+
+        if(pane2.getTranslateX() == -2100 || pane2.getTranslateX() == -2160){
+            fade(chest3closed, 0, 500).play();
+            fade(chest3open, 1, 500).play();
+            CoinChest coinChest = new CoinChest();
+            displayText.setText("Received " + coinChest.getNumCoins() + "coins!!");
+            fade(displayText, 1, 1000, true, 4).play();
+            heroObject.updateCoins(coinChest.getNumCoins());
+            CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + coinChest.getNumCoins()));
+
+            runTranslateTransition(CoinGroup, 0, -300, 2000).play();
+            fade(CoinGroup, 1, 300, true, 6).play();
+            return;
+        }
+
+
+        if(pane2.getTranslateX() == -3900 || pane2.getTranslateX() == -3840){
+            fade(chest4closed, 0, 500).play();
+            fade(chest4open, 1, 500).play();
+            heroObject.getWeapon().upgradeWeapon();
+            displayText.setText("Upgraded Sword");
+            Knife.setOpacity(0);
+            fade(displayText, 1, 1000, true, 4).play();
+            Sword.setFitHeight(80);
+            return;
+        }
+    }
+
+    private void checkAttack(){
+        if(pane2.getTranslateX() == -900){
+            knife1.hit(Knife);
+            if(Hero.getTranslateY()-GroupOrc1.getTranslateY() < -40) {
+                System.out.println("hitting group failed");
+                return;
+            }
+            else
+            {
+                System.out.println("hitting group");
+                groupOrc1Dead = true;
+                runTranslateTransition(GroupOrc1, 6000, 0, 2000).play();
+            }
+
+        }
+    }
+
     void checkOrc(){
         if(pane2.getTranslateX() <= -120 && pane2.getTranslateX() >= -180) {
             System.out.println("check orc function");
@@ -232,9 +348,114 @@ public class MainGame extends Application implements Initializable {
             return;
         }
 
-        if(pane2.getTranslateX() <= -1020 && pane2.getTranslateX() >= -1080) {
+        // Changed the group orc 1 to a better coordinate
+
+        if(pane2.getTranslateX() <= -1040 && pane2.getTranslateX() >= -1140) {
+
+            System.out.println("check GroupOrc1 function");
+            if(GroupOrc1.getTranslateY()<Hero.getTranslateY() && (!groupOrc1Dead))
+                death();
+            else {
+                runTranslateTransition(GroupOrc1, 6000, 0, 2000).play();
+            }
+            return;
 
         }
+
+        if(pane2.getTranslateX() <= -1040 && pane2.getTranslateX() >= -1140) {
+
+            System.out.println("check GroupOrc2 function");
+            if(GroupOrc2.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(GroupOrc2, 6000, 0, 2000).play();
+            return;
+
+        }
+//        if(pane2.getTranslateX() <= -1540 && pane2.getTranslateX() >= -1640) {
+//
+//            System.out.println("check GroupOrc2 function");
+//            if(GroupOrc2.getTranslateY()<Hero.getTranslateY())
+//                death();
+//            else
+//                runTranslateTransition(GroupOrc2, 6000, 0, 2000).play();
+//            return;
+//
+//        }
+
+        if(pane2.getTranslateX() <= -1860 && pane2.getTranslateX() >= -1960) {
+
+            System.out.println("check Orc3 function");
+            if(Orc3.getTranslateY()<Hero.getTranslateY())
+                death();
+            else {
+                Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    sword1.hit(Sword);
+                }));
+                Timeline next = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    runTranslateTransition(Orc3, 6000, 0, 2000).play();
+                }));
+                new SequentialTransition(intro, next).play();
+
+            }
+            return;
+
+        }
+        if(pane2.getTranslateX() <= -2500 && pane2.getTranslateX() >= -2600) {
+
+            System.out.println("check Orc4 function");
+            if(Orc4.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(Orc4, 6000, 0, 2000).play();
+            return;
+
+        }
+
+        if(pane2.getTranslateX() <= -2900 && pane2.getTranslateX() >= -3020) {
+
+            System.out.println("check Orc5 function");
+            if(Orc5.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(Orc5, 6000, 0, 2000).play();
+            return;
+
+        }
+
+        if(pane2.getTranslateX() <= -3100 && pane2.getTranslateX() >= -3200) {
+
+            System.out.println("check Orc6 function");
+            if(Orc6.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(Orc6, 6000, 0, 2000).play();
+            return;
+
+        }
+
+        if(pane2.getTranslateX() <= -3400 && pane2.getTranslateX() >= -3500) {
+
+            System.out.println("check Orc7 function");
+            if(Orc7.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(Orc7, 6000, 0, 2000).play();
+            return;
+
+        }
+
+        if(pane2.getTranslateX() <= -4280 && pane2.getTranslateX() >= -4400) {
+
+            System.out.println("check GroupOrc3 function");
+            if(GroupOrc3.getTranslateY()<Hero.getTranslateY())
+                death();
+            else
+                runTranslateTransition(GroupOrc3, 6000, 0, 2000).play();
+            return;
+
+        }
+
     }
 
     private static int score = 0;
@@ -279,6 +500,8 @@ public class MainGame extends Application implements Initializable {
         }
         else {
             checkOrc();
+            checkChest();
+            checkAttack();
         }
 
     }
@@ -323,6 +546,8 @@ public class MainGame extends Application implements Initializable {
         }
         else{
             checkOrc();
+            checkChest();
+            checkAttack();
         }
     }
 
