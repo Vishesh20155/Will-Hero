@@ -31,6 +31,8 @@ import static sample.CommonAnimation.*;
 
 public class MainGame extends Application implements Initializable {
 
+    //Checking
+
     private ArrayList<Position> AbyssStartingPostion = new ArrayList<Position>();
     private ArrayList<Position> AbyssEndingPosition = new ArrayList<Position>();
 
