@@ -96,7 +96,7 @@
                   <Image url="@../assets/Islands2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="island2" fitHeight="103.0" fitWidth="500.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" translateX="3300.0" translateY="370.0">
+            <ImageView fx:id="island2" fitHeight="103.0" fitWidth="550.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" translateX="3250.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands1.png" />
                </image>
