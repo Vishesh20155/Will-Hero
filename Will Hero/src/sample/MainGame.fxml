@@ -67,7 +67,7 @@
                   <Image url="@../assets/Islands1.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="134.0" fitWidth="350.0" translateX="1900.0" translateY="370.0">
+            <ImageView fitHeight="134.0" fitWidth="370.0" translateX="1880.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands8.png" />
                </image>
@@ -112,7 +112,7 @@
                   <Image url="@../assets/Islands5.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="115.0" fitWidth="500.0" translateX="4600.0" translateY="370.0">
+            <ImageView fitHeight="115.0" fitWidth="500.0" translateX="4570.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands9.png" />
                </image>
@@ -189,12 +189,12 @@
                   </ImageView>
                </children>
             </Group>
-            <ImageView fx:id="chest2closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="1930.0" translateY="320.0">
+            <ImageView fx:id="chest2closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="1905.0" translateY="320.0">
                <image>
                   <Image url="@../assets/ChestClosed.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="chest2open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="1930.0" translateY="320.0">
+            <ImageView fx:id="chest2open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="1905.0" translateY="320.0">
                <image>
                   <Image url="@../assets/ChestOpen.png" />
                </image>
@@ -219,12 +219,12 @@
                   <Image url="@../assets/ChestOpen.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="chest3open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="2650.0" translateY="320.0">
+            <ImageView fx:id="chest3open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="2695.0" translateY="320.0">
                <image>
                   <Image url="@../assets/ChestOpen.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="chest3closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="2650.0" translateY="320.0">
+            <ImageView fx:id="chest3closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="2695.0" translateY="320.0">
                <image>
                   <Image url="@../assets/ChestClosed.png" />
                </image>

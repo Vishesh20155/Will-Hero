@@ -48,7 +48,7 @@ public class MainGame extends Application implements Initializable {
         AbyssStartingPostion.add(p2_s);
         AbyssEndingPosition.add(p2_e);
         Position p3_s = new Position(1580,0);
-        Position p3_e = new Position(1711,0);
+        Position p3_e = new Position(1670,0);
         AbyssStartingPostion.add(p3_s);
         AbyssEndingPosition.add(p3_e);
         Position p4_s = new Position(2090,0);
@@ -56,11 +56,11 @@ public class MainGame extends Application implements Initializable {
         AbyssStartingPostion.add(p4_s);
         AbyssEndingPosition.add(p4_e);
         Position p5_s = new Position(2360,0);
-        Position p5_e = new Position(2410,0);
+        Position p5_e = new Position(2399,0);
         AbyssStartingPostion.add(p5_s);
         AbyssEndingPosition.add(p5_e);
         Position p6_s = new Position(2610,0);
-        Position p6_e = new Position(2710,0);
+        Position p6_e = new Position(2697,0);
         AbyssStartingPostion.add(p6_s);
         AbyssEndingPosition.add(p6_e);
         Position p7_s = new Position(3010,0);
@@ -76,7 +76,7 @@ public class MainGame extends Application implements Initializable {
         AbyssStartingPostion.add(p9_s);
         AbyssEndingPosition.add(p9_e);
         Position p10_s = new Position(4310,0);
-        Position p10_e = new Position(4411,0);
+        Position p10_e = new Position(4378,0);
         AbyssStartingPostion.add(p10_s);
         AbyssEndingPosition.add(p10_e);
 
@@ -293,7 +293,7 @@ public class MainGame extends Application implements Initializable {
             return;
         }
 
-        if(pane2.getTranslateX() == -2100 || pane2.getTranslateX() == -2160){
+        if(pane2.getTranslateX() == -2220 || pane2.getTranslateX() == -2160){
             fade(chest3closed, 0, 500).play();
             fade(chest3open, 1, 500).play();
             CoinChest coinChest = new CoinChest();

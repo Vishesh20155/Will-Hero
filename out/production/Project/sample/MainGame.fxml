@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -61,12 +62,12 @@
                   <Image url="@../assets/Islands11.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="94.0" fitWidth="200.0" translateX="1150.0" translateY="370.0">
+            <ImageView fitHeight="94.0" fitWidth="220.0" layoutX="9.0" translateX="1120.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands1.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="134.0" fitWidth="350.0" translateX="1900.0" translateY="370.0">
+            <ImageView fitHeight="134.0" fitWidth="370.0" translateX="1880.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands8.png" />
                </image>
@@ -96,7 +97,7 @@
                   <Image url="@../assets/Islands2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="island2" fitHeight="103.0" fitWidth="500.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" translateX="3300.0" translateY="370.0">
+            <ImageView fx:id="island2" fitHeight="103.0" fitWidth="550.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" translateX="3250.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands1.png" />
                </image>
@@ -111,7 +112,7 @@
                   <Image url="@../assets/Islands5.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="115.0" fitWidth="500.0" translateX="4600.0" translateY="370.0">
+            <ImageView fitHeight="115.0" fitWidth="500.0" translateX="4570.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands9.png" />
                </image>
@@ -129,11 +130,6 @@
             <ImageView fx:id="Orc3" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="2400.0" translateY="315.0">
                <image>
                   <Image url="@../assets/RedOrc1.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="Orc4" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="3040.0" translateY="305.0">
-               <image>
-                  <Image url="@../assets/RedOrc2.png" />
                </image>
             </ImageView>
             <ImageView fx:id="Orc5" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="3450.0" translateY="305.0">
@@ -193,12 +189,12 @@
                   </ImageView>
                </children>
             </Group>
-            <ImageView fx:id="chest2closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="1930.0" translateY="320.0">
+            <ImageView fx:id="chest2closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="1905.0" translateY="320.0">
                <image>
                   <Image url="@../assets/ChestClosed.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="chest2open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="1930.0" translateY="320.0">
+            <ImageView fx:id="chest2open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="1905.0" translateY="320.0">
                <image>
                   <Image url="@../assets/ChestOpen.png" />
                </image>
@@ -223,12 +219,12 @@
                   <Image url="@../assets/ChestOpen.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="chest3open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="2650.0" translateY="320.0">
+            <ImageView fx:id="chest3open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="2695.0" translateY="320.0">
                <image>
                   <Image url="@../assets/ChestOpen.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="chest3closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="2650.0" translateY="320.0">
+            <ImageView fx:id="chest3closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="2695.0" translateY="320.0">
                <image>
                   <Image url="@../assets/ChestClosed.png" />
                </image>
@@ -252,6 +248,17 @@
                   </ImageView>
                </children>
             </Group>
+            <ImageView fx:id="TNT1" fitHeight="56.0" fitWidth="56.0" layoutY="317.0" translateX="3032.0">
+               <image>
+                  <Image url="@../assets/TNT.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="TNT2" fitHeight="56.0" fitWidth="56.0" layoutX="3010.0" layoutY="315.0" translateX="3010.0">
+               <image>
+                  <Image url="@../assets/TNT.png" />
+               </image>
+            </ImageView>
+            <Circle fill="DODGERBLUE" layoutX="3067.0" layoutY="337.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Pane>
       <Group fx:id="Hero" translateX="120.0" translateY="365.0">
