@@ -31,9 +31,9 @@
             <Image url="@../Images/Settings.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="761.0" layoutY="9.0" prefHeight="59.0" prefWidth="136.0">
+      <AnchorPane layoutX="761.0" layoutY="9.0" onMouseClicked="#click2" prefHeight="59.0" prefWidth="136.0">
          <children>
-            <ImageView fitHeight="59.0" fitWidth="60.0" onMouseClicked="#click2" pickOnBounds="true">
+            <ImageView fitHeight="59.0" fitWidth="60.0" pickOnBounds="true">
                <image>
                   <Image url="@../Images/coin.png" />
                </image>
@@ -67,7 +67,7 @@
                   <Image url="@../assets/Islands1.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="134.0" fitWidth="350.0" translateX="1900.0" translateY="370.0">
+            <ImageView fitHeight="134.0" fitWidth="370.0" translateX="1880.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands8.png" />
                </image>
@@ -189,12 +189,12 @@
                   </ImageView>
                </children>
             </Group>
-            <ImageView fx:id="chest2closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="1930.0" translateY="320.0">
+            <ImageView fx:id="chest2closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="1905.0" translateY="320.0">
                <image>
                   <Image url="@../assets/ChestClosed.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="chest2open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="1930.0" translateY="320.0">
+            <ImageView fx:id="chest2open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="1905.0" translateY="320.0">
                <image>
                   <Image url="@../assets/ChestOpen.png" />
                </image>
@@ -219,12 +219,12 @@
                   <Image url="@../assets/ChestOpen.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="chest3open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="2650.0" translateY="320.0">
+            <ImageView fx:id="chest3open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="2695.0" translateY="320.0">
                <image>
                   <Image url="@../assets/ChestOpen.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="chest3closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="2650.0" translateY="320.0">
+            <ImageView fx:id="chest3closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="2695.0" translateY="320.0">
                <image>
                   <Image url="@../assets/ChestClosed.png" />
                </image>
