@@ -43,16 +43,16 @@ public class MainGame extends Application implements Initializable {
         Position p1_e = new Position(960,0);
         AbyssStartingPostion.add(p1_s);
         AbyssEndingPosition.add(p1_e);
-        Position p2_s = new Position(1160,0);
+        Position p2_s = new Position(1140,0);
         Position p2_e = new Position(1260,0);
         AbyssStartingPostion.add(p2_s);
         AbyssEndingPosition.add(p2_e);
-        Position p3_s = new Position(1610,0);
+        Position p3_s = new Position(1580,0);
         Position p3_e = new Position(1711,0);
         AbyssStartingPostion.add(p3_s);
         AbyssEndingPosition.add(p3_e);
-        Position p4_s = new Position(2060,0);
-        Position p4_e = new Position(2110,0);
+        Position p4_s = new Position(2090,0);
+        Position p4_e = new Position(2090,0);
         AbyssStartingPostion.add(p4_s);
         AbyssEndingPosition.add(p4_e);
         Position p5_s = new Position(2360,0);
@@ -60,11 +60,11 @@ public class MainGame extends Application implements Initializable {
         AbyssStartingPostion.add(p5_s);
         AbyssEndingPosition.add(p5_e);
         Position p6_s = new Position(2610,0);
-        Position p6_e = new Position(2711,0);
+        Position p6_e = new Position(2710,0);
         AbyssStartingPostion.add(p6_s);
         AbyssEndingPosition.add(p6_e);
         Position p7_s = new Position(3010,0);
-        Position p7_e = new Position(3111,0);
+        Position p7_e = new Position(3100,0);
         AbyssStartingPostion.add(p7_s);
         AbyssEndingPosition.add(p7_e);
         Position p8_s = new Position(3610,0);
@@ -153,8 +153,8 @@ public class MainGame extends Application implements Initializable {
     @FXML
     private ImageView Orc3;
 
-    @FXML
-    private ImageView Orc4;
+    //@FXML
+    //private ImageView Orc4;
 
     @FXML
     private ImageView Orc5;
@@ -203,6 +203,12 @@ public class MainGame extends Application implements Initializable {
     @FXML
     private ImageView chest4open;
 
+    @FXML
+    private ImageView TNT1;
+
+    @FXML
+    private ImageView TNT2;
+
 
 
     @Override
@@ -235,7 +241,7 @@ public class MainGame extends Application implements Initializable {
         runTranslateTransition(GroupOrc1, 0, -100, 600, Timeline.INDEFINITE, true).play();
         runTranslateTransition(GroupOrc2, 0, -100, 600, Timeline.INDEFINITE, true).play();
         runTranslateTransition(Orc3, 0, -100, 600, Timeline.INDEFINITE, true).play();
-        runTranslateTransition(Orc4, 0, -100, 600, Timeline.INDEFINITE, true).play();
+        //runTranslateTransition(Orc4, 0, -100, 600, Timeline.INDEFINITE, true).play();
         runTranslateTransition(Orc5, 0, -100, 600, Timeline.INDEFINITE, true).play();
         runTranslateTransition(Orc6, 0, -100, 600, Timeline.INDEFINITE, true).play();
         runTranslateTransition(Orc7, 0, -100, 600, Timeline.INDEFINITE, true).play();
@@ -403,16 +409,16 @@ public class MainGame extends Application implements Initializable {
             return;
 
         }
-        if(pane2.getTranslateX() <= -2500 && pane2.getTranslateX() >= -2600) {
-
-            System.out.println("check Orc4 function");
-            if(Orc4.getTranslateY()<Hero.getTranslateY())
-                death();
-            else
-                runTranslateTransition(Orc4, 6000, 0, 2000).play();
-            return;
-
-        }
+//        if(pane2.getTranslateX() <= -2500 && pane2.getTranslateX() >= -2600) {
+//
+//            System.out.println("check Orc4 function");
+//            if(Orc4.getTranslateY()<Hero.getTranslateY())
+//                death();
+//            else
+//                //runTranslateTransition(Orc4, 6000, 0, 2000).play();
+//            return;
+//
+//        }
 
         if(pane2.getTranslateX() <= -2900 && pane2.getTranslateX() >= -3020) {
 

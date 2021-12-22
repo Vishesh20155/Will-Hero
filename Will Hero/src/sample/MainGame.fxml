@@ -61,7 +61,7 @@
                   <Image url="@../assets/Islands11.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="94.0" fitWidth="200.0" translateX="1150.0" translateY="370.0">
+            <ImageView fitHeight="94.0" fitWidth="220.0" layoutX="9.0" translateX="1120.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands1.png" />
                </image>
@@ -129,11 +129,6 @@
             <ImageView fx:id="Orc3" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="2400.0" translateY="315.0">
                <image>
                   <Image url="@../assets/RedOrc1.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="Orc4" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="3040.0" translateY="305.0">
-               <image>
-                  <Image url="@../assets/RedOrc2.png" />
                </image>
             </ImageView>
             <ImageView fx:id="Orc5" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="3450.0" translateY="305.0">
@@ -252,6 +247,16 @@
                   </ImageView>
                </children>
             </Group>
+            <ImageView fx:id="TNT1" fitHeight="56.0" fitWidth="56.0" layoutY="317.0" translateX="3032.0">
+               <image>
+                  <Image url="@../assets/TNT.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="TNT2" fitHeight="56.0" fitWidth="56.0" layoutX="3010.0" layoutY="315.0" translateX="3010.0">
+               <image>
+                  <Image url="@../assets/TNT.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Group fx:id="Hero" translateX="120.0" translateY="365.0">
