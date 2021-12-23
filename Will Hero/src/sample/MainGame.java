@@ -100,6 +100,8 @@ public class MainGame extends Application implements Initializable {
     private boolean groupOrc1Dead = false;
     private TNT tnt1 = new TNT();
     private TNT tnt2 = new TNT();
+    private ArrayList<Float> AbyssList = new ArrayList<Float>();
+    private boolean AbyssFallorNot = false;
 
     @FXML
     private Group Hero;
@@ -265,6 +267,17 @@ public class MainGame extends Application implements Initializable {
 
     static int noOfClicks = 0;
 
+    private void InitaialiseAbyssList(){
+
+        AbyssList.add(-600F);
+        AbyssList.add(-840F);
+        AbyssList.add(-1320F);
+        AbyssList.add(-2040F);
+        AbyssList.add(-2280F);
+        AbyssList.add(-3720F);
+
+    }
+
     boolean checkFall(float x){
         for(int i = 0 ; i <AbyssStartingPostion.size() ; i++){
             if(x>AbyssStartingPostion.get(i).getX()){
@@ -364,6 +377,48 @@ public class MainGame extends Application implements Initializable {
 //            }
         }
     }
+
+    void checkAbyss(float x){
+//        if ((k = pane2.getTranslateX()) == -600){         //checkAbyss(k = pane2.getTranslateX)
+//            System.out.println("at abyss");
+//            Timer t = new Timer();
+//            t.schedule(new TimerTask() {
+//                @Override
+//                public void run() {
+//                    System.out.println("inside timer thread");
+//                    if(pane2.getTranslateX() >= k-120){
+//                        System.out.println("inside timer thread 2");
+//                        System.out.println(pane2.getTranslateX());
+//                        death();
+//                    }
+//                }
+//            }, 1000);
+//        }
+        for(int i = 0 ; i<AbyssList.size() ; i++){
+            float AbyssCoordinate = AbyssList.get(i);
+            if(AbyssCoordinate == x){
+                System.out.println("At Abyss");
+                Timer timer = new Timer();
+
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        System.out.println("Inside timer thread");
+                        if(pane2.getTranslateX() >= AbyssCoordinate-120){
+                            System.out.println("Inside timer thread 2");
+                            System.out.println(x);
+                            //AbyssFallorNot = true;
+                            death();
+
+                        }
+                    }
+                } , 1000);
+            }
+        }
+        //return AbyssFallorNot;
+
+        }
+
 
     void checkOrc(){
         if(pane2.getTranslateX() <= -120 && pane2.getTranslateX() >= -180) {
@@ -570,11 +625,14 @@ public class MainGame extends Application implements Initializable {
         if(firstClick)
         {
             // Initialize abyssListNew()
+            InitaialiseAbyssList();
             Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
                 afterFirstClickTransition();
             }));
             new SequentialTransition(intro).play();
             firstClick = false;
+
+
         }
 
         {
@@ -594,26 +652,29 @@ public class MainGame extends Application implements Initializable {
         }
         double k;
 
-        if ((k = pane2.getTranslateX()) == -600){         //checkAbyss(k = pane2.getTranslateX)
-            System.out.println("at abyss");
-            Timer t = new Timer();
-            t.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    System.out.println("inside timer thread");
-                    if(pane2.getTranslateX() >= k-120){
-                        System.out.println("inside timer thread 2");
-                        System.out.println(pane2.getTranslateX());
-                        death();
-                    }
-                }
-            }, 1000);
-        }
-        else {
+//        if ((k = pane2.getTranslateX()) == -600){         //checkAbyss(k = pane2.getTranslateX)
+//            System.out.println("at abyss");
+//            Timer t = new Timer();
+//            t.schedule(new TimerTask() {
+//                @Override
+//                public void run() {
+//                    System.out.println("inside timer thread");
+//                    if(pane2.getTranslateX() >= k-120){
+//                        System.out.println("inside timer thread 2");
+//                        System.out.println(pane2.getTranslateX());
+//                        death();
+//                    }
+//                }
+//            }, 1000);
+//        }
+
+        //else
+        {
             checkOrc();
             checkChest();
             checkAttack();
             checkObstacle();
+            checkAbyss((float) pane2.getTranslateX());
         }
         printCoordinateDetails();
 
