@@ -248,6 +248,7 @@
                   </ImageView>
                </children>
             </Group>
+            <Circle fx:id="ExplosionCloud1" fill="#8f6464b8" opacity="0.0" radius="118.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" translateX="3060.0" translateY="335.0" />
             <ImageView fx:id="TNT1" fitHeight="56.0" fitWidth="56.0" layoutY="317.0" translateX="3032.0">
                <image>
                   <Image url="@../assets/TNT.png" />
@@ -258,7 +259,6 @@
                   <Image url="@../assets/TNT.png" />
                </image>
             </ImageView>
-            <Circle fill="DODGERBLUE" layoutX="3067.0" layoutY="337.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Pane>
       <Group fx:id="Hero" translateX="120.0" translateY="365.0">

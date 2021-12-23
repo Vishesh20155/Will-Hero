@@ -78,6 +78,17 @@ public class CommonAnimation {
         return load;
     }
 
+    public static RotateTransition runRotateTransition(Node n, double ang, double fromAng, double duration, int cycleCount, boolean rev) {
+        RotateTransition load = new RotateTransition();
+        load.setNode(n);
+        load.setByAngle(ang);
+        load.setCycleCount(cycleCount);
+        load.setAutoReverse(rev);
+        load.setFromAngle(fromAng);
+        load.setDuration(Duration.millis(duration));
+        return load;
+    }
+
     public static Timeline delay(double time)
     {
         return new Timeline(new KeyFrame(Duration.millis(time), e -> { }));

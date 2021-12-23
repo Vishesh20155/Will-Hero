@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
@@ -25,6 +26,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import static sample.CommonAnimation.*;
@@ -95,6 +98,8 @@ public class MainGame extends Application implements Initializable {
     private Sword sword1 = new Sword();
     private Knife knife1 = new Knife();
     private boolean groupOrc1Dead = false;
+    private TNT tnt1 = new TNT();
+    private TNT tnt2 = new TNT();
 
     @FXML
     private Group Hero;
@@ -205,6 +210,9 @@ public class MainGame extends Application implements Initializable {
 
     @FXML
     private ImageView TNT1;
+
+    @FXML
+    private Circle ExplosionCloud1;
 
     @FXML
     private ImageView TNT2;
@@ -334,6 +342,26 @@ public class MainGame extends Application implements Initializable {
                 runTranslateTransition(GroupOrc1, 6000, 0, 2000).play();
             }
 
+        }
+    }
+
+    void checkObstacle(){
+        if(pane2.getTranslateX() == -2520){
+            tnt1.explode(TNT1, ExplosionCloud1);
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    fade(ExplosionCloud1, 0.8, 500).play();
+                    if (pane2.getTranslateX() >= -2760){
+                        System.out.println("death from tnt");
+                        death();
+                    }
+                }
+            }, 3000);
+//            if (pane2.getTranslateX() >= -2640){
+//                death();
+//            }
         }
     }
 
@@ -468,10 +496,10 @@ public class MainGame extends Application implements Initializable {
 
     private static int score = 0;
 
-
+/*
     @FXML
     void click(MouseEvent event) throws InterruptedException {
-        printCoordinateDetails();
+//        printCoordinateDetails();
 
         score++;
 
@@ -510,14 +538,90 @@ public class MainGame extends Application implements Initializable {
             checkOrc();
             checkChest();
             checkAttack();
+            checkObstacle();
         }
+        printCoordinateDetails();
+        if (pane2.getTranslateX() == -600){
+            System.out.println("at -600");
+            Timer t = new Timer();
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    System.out.println("inside timer thread");
+                    if(pane2.getTranslateX() >= -720){
+                        System.out.println("inside timer thread 2");
+                        System.out.println(pane2.getTranslateX());
+                        death();
+                    }
+                }
+            }, 1000);
+        }
+    }
+    */
+
+    @FXML
+    void click(MouseEvent event) throws InterruptedException {
+//        printCoordinateDetails();
+
+        score++;
+
+        ScoreLabel.setText(Integer.toString(score));
+
+        if(firstClick)
+        {
+            // Initialize abyssListNew()
+            Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                afterFirstClickTransition();
+            }));
+            new SequentialTransition(intro).play();
+            firstClick = false;
+        }
+
+        {
+            if(noOfClicks < 4) {
+                Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    moveHeroForward();
+                }));
+                new SequentialTransition(intro).play();
+                noOfClicks++;
+            }
+            else{
+                Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    moveScreen();
+                }));
+                new SequentialTransition(intro).play();
+            }
+        }
+        double k;
+
+        if ((k = pane2.getTranslateX()) == -600){         //checkAbyss(k = pane2.getTranslateX)
+            System.out.println("at abyss");
+            Timer t = new Timer();
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    System.out.println("inside timer thread");
+                    if(pane2.getTranslateX() >= k-120){
+                        System.out.println("inside timer thread 2");
+                        System.out.println(pane2.getTranslateX());
+                        death();
+                    }
+                }
+            }, 1000);
+        }
+        else {
+            checkOrc();
+            checkChest();
+            checkAttack();
+            checkObstacle();
+        }
+        printCoordinateDetails();
 
     }
 
     @FXML
     void click2(MouseEvent event) {
         System.out.println("DRAGGED");
-        printCoordinateDetails();
 
         score+=2;
 
@@ -556,7 +660,9 @@ public class MainGame extends Application implements Initializable {
             checkOrc();
             checkChest();
             checkAttack();
+            checkObstacle();
         }
+        printCoordinateDetails();
     }
 
 
