@@ -50,7 +50,7 @@
             <Image url="@../Images/Clouds.png" />
          </image>
       </ImageView>
-      <Pane fx:id="pane2" layoutY="64.0" minWidth="5000.0" onMouseClicked="#click" prefHeight="536.0" prefWidth="6825.0">
+      <Pane fx:id="pane2" layoutX="57.0" layoutY="64.0" minWidth="5000.0" onMouseClicked="#click" prefHeight="536.0" prefWidth="7417.0">
          <children>
             <ImageView fitHeight="134.0" fitWidth="200.0" translateX="850.0" translateY="370.0">
                <image>
@@ -268,6 +268,11 @@
             <ImageView fitHeight="134.0" fitWidth="450.0" translateX="6050.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands5.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="103.0" fitWidth="750.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" translateX="6600.0" translateY="370.0">
+               <image>
+                  <Image url="@../assets/Islands1.png" />
                </image>
             </ImageView>
          </children>

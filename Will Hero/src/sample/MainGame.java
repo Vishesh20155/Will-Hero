@@ -97,6 +97,7 @@ public class MainGame extends Application implements Initializable {
     private Player player = new Player();
     private Sword sword1 = new Sword();
     private Knife knife1 = new Knife();
+    private Knife knife2 = new Knife();
     private boolean groupOrc1Dead = false;
     private TNT tnt1 = new TNT();
     private TNT tnt2 = new TNT();
@@ -114,6 +115,9 @@ public class MainGame extends Application implements Initializable {
 
     @FXML
     private ImageView Knife;
+
+    @FXML
+    private ImageView Knife2;
 
     @FXML
     private Group GroupOrc1;
@@ -209,6 +213,12 @@ public class MainGame extends Application implements Initializable {
 
     @FXML
     private ImageView chest4open;
+
+    @FXML
+    private ImageView chest5closed;
+
+    @FXML
+    private ImageView chest5open;
 
     @FXML
     private ImageView TNT1;
