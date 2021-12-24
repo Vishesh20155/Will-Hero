@@ -36,6 +36,8 @@ public class PauseMenuController extends Application implements Initializable, S
     @FXML
     private Label SaveCurrentGame;
 
+    public static int noOfGamesSaved = 1;
+
 
 
 
@@ -139,43 +141,25 @@ public class PauseMenuController extends Application implements Initializable, S
         newWindow.close();
     }
 
-//    @FXML
-//    void SaveButtonClicked(MouseEvent event) {
-//        double x = MainGame.getHeroPosition();
-//        int sc = MainGame.getGameScore();
-//        int co = MainGame.getGameCoins();
-//        System.out.println("Location Received: " + x);
-//        String fileName = "filename.txt";
-//
-//        try {
-//            BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true));
-//            out.write(String.valueOf(x) + "\n");
-//            out.write(String.valueOf(sc) + "\n");
-//            out.write(String.valueOf(co) + "\n");
-//            out.close();
-//        }
-//        catch (IOException e) {
-//            System.out.println("Exception Occurred" + e);
-//        }
-//    }
-
     @FXML
-    void SaveButtonClicked(MouseEvent event) throws IOException{
+    void SaveButtonClicked(MouseEvent event) {
+        noOfGamesSaved++;
         double x = MainGame.getHeroPosition();
         int sc = MainGame.getGameScore();
         int co = MainGame.getGameCoins();
         System.out.println("Location Received: " + x);
+        String fileName = "filename.txt";
 
-        ObjectOutputStream out = null;
-        try{
-//            out = new ObjectOutputStream(new FileOutputStream("GameData.txt"));
-//            out.write(MainGame.returnData());
-        }
-        finally {
+        try {
+            BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true));
+            out.write(String.valueOf(x) + "\n");
+            out.write(String.valueOf(sc) + "\n");
+            out.write(String.valueOf(co) + "\n");
             out.close();
         }
-
+        catch (IOException e) {
+            System.out.println("Exception Occurred" + e);
+        }
     }
-
 
 }

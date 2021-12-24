@@ -26,7 +26,7 @@
             <ColorAdjust />
          </effect>
       </AnchorPane>
-      <AnchorPane layoutX="-4.0" layoutY="200.0" prefHeight="346.0" prefWidth="899.0" style="-fx-background-color: #94d1d4#94d1d4;">
+      <AnchorPane fx:id="ScoreAnchorPane" layoutX="-4.0" layoutY="200.0" opacity="0.0" prefHeight="346.0" prefWidth="899.0" style="-fx-background-color: #94d1d4#94d1d4;">
          <children>
             <AnchorPane layoutX="97.0" layoutY="5.0" prefHeight="52.0" prefWidth="731.0" style="-fx-border-color: blue; -fx-border-width: 2;">
                <children>
@@ -40,12 +40,12 @@
                         <Image url="@../Images/coin.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#b97777" layoutX="626.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20">
+                  <Text fx:id="CoinText0" fill="#b97777" layoutX="626.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NA">
                      <font>
                         <Font name="Comic Sans MS Bold" size="36.0" />
                      </font>
                   </Text>
-                  <Text fill="#b97777" layoutX="341.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="53">
+                  <Text fx:id="ScoreText0" fill="#b97777" layoutX="341.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NA">
                      <font>
                         <Font name="Comic Sans MS Bold" size="36.0" />
                      </font>
@@ -64,12 +64,12 @@
                         <Image url="@../Images/coin.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#b97777" layoutX="626.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                  <Text fx:id="CoinText1" fill="#b97777" layoutX="626.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NA">
                      <font>
                         <Font name="Comic Sans MS Bold" size="36.0" />
                      </font>
                   </Text>
-                  <Text fill="#b97777" layoutX="341.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12">
+                  <Text fx:id="ScoreText1" fill="#b97777" layoutX="341.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NA">
                      <font>
                         <Font name="Comic Sans MS Bold" size="36.0" />
                      </font>
@@ -88,12 +88,12 @@
                         <Image url="@../Images/coin.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#b97777" layoutX="626.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="14">
+                  <Text fx:id="CoinText2" fill="#b97777" layoutX="626.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NA">
                      <font>
                         <Font name="Comic Sans MS Bold" size="36.0" />
                      </font>
                   </Text>
-                  <Text fill="#b97777" layoutX="341.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="46">
+                  <Text fx:id="ScoreText2" fill="#b97777" layoutX="341.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NA">
                      <font>
                         <Font name="Comic Sans MS Bold" size="36.0" />
                      </font>
@@ -112,12 +112,12 @@
                         <Image url="@../Images/coin.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#b97777" layoutX="626.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="33">
+                  <Text fx:id="CoinText3" fill="#b97777" layoutX="626.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NA">
                      <font>
                         <Font name="Comic Sans MS Bold" size="36.0" />
                      </font>
                   </Text>
-                  <Text fill="#b97777" layoutX="341.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="103">
+                  <Text fx:id="ScoreText3" fill="#b97777" layoutX="341.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NA">
                      <font>
                         <Font name="Comic Sans MS Bold" size="36.0" />
                      </font>
@@ -136,12 +136,12 @@
                         <Image url="@../Images/coin.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#b97777" layoutX="626.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+                  <Text fx:id="CoinText4" fill="#b97777" layoutX="626.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NA">
                      <font>
                         <Font name="Comic Sans MS Bold" size="36.0" />
                      </font>
                   </Text>
-                  <Text fill="#b97777" layoutX="341.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="34">
+                  <Text fx:id="ScoreText4" fill="#b97777" layoutX="341.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NA">
                      <font>
                         <Font name="Comic Sans MS Bold" size="36.0" />
                      </font>
@@ -177,5 +177,10 @@
             <Image url="@../Images/title1.png" />
          </image>
       </ImageView>
+      <Button fx:id="ShowButton" mnemonicParsing="false" onMouseClicked="#ShowButtonClicked" prefHeight="80.0" prefWidth="394.0" text="SHOW SAVED GAMES" translateX="300.0" translateY="300.0">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
