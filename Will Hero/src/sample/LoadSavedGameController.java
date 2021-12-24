@@ -9,12 +9,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
-public class LoadSavedGameController {
+public class LoadSavedGameController implements Serializable {
 
     @FXML
     private Button LoadGameButton;

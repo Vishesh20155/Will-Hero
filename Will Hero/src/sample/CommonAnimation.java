@@ -4,8 +4,10 @@ import javafx.animation.*;
 import javafx.scene.Node;
 import javafx.util.Duration;
 
+import java.io.Serializable;
 
-public class CommonAnimation {
+
+public class CommonAnimation implements Serializable {
     private static double speedX = 0.04;
     private static double speedY = 0.04;
 

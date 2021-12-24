@@ -15,14 +15,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PauseMenuController extends Application implements Initializable {
+public class PauseMenuController extends Application implements Initializable, Serializable {
 
     @FXML
     private Label GamePaused;
@@ -142,23 +139,43 @@ public class PauseMenuController extends Application implements Initializable {
         newWindow.close();
     }
 
+//    @FXML
+//    void SaveButtonClicked(MouseEvent event) {
+//        double x = MainGame.getHeroPosition();
+//        int sc = MainGame.getGameScore();
+//        int co = MainGame.getGameCoins();
+//        System.out.println("Location Received: " + x);
+//        String fileName = "filename.txt";
+//
+//        try {
+//            BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true));
+//            out.write(String.valueOf(x) + "\n");
+//            out.write(String.valueOf(sc) + "\n");
+//            out.write(String.valueOf(co) + "\n");
+//            out.close();
+//        }
+//        catch (IOException e) {
+//            System.out.println("Exception Occurred" + e);
+//        }
+//    }
+
     @FXML
-    void SaveButtonClicked(MouseEvent event) {
+    void SaveButtonClicked(MouseEvent event) throws IOException{
         double x = MainGame.getHeroPosition();
         int sc = MainGame.getGameScore();
         int co = MainGame.getGameCoins();
         System.out.println("Location Received: " + x);
-        String fileName = "filename.txt";
 
-        try {
-            BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true));
-            out.write(String.valueOf(x) + "\n");
-            out.write(String.valueOf(sc) + "\n");
-            out.write(String.valueOf(co) + "\n");
+        ObjectOutputStream out = null;
+        try{
+//            out = new ObjectOutputStream(new FileOutputStream("GameData.txt"));
+//            out.write(MainGame.returnData());
+        }
+        finally {
             out.close();
         }
-        catch (IOException e) {
-            System.out.println("Exception Occurred" + e);
-        }
+
     }
+
+
 }

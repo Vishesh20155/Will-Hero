@@ -23,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -32,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 import static sample.CommonAnimation.*;
 
-public class MainGame extends Application implements Initializable {
+public class MainGame extends Application implements Initializable, Serializable {
 
     //Checking again
 
@@ -773,6 +774,7 @@ public class MainGame extends Application implements Initializable {
 
         if(firstClick)
         {
+
             // Initialize abyssListNew()
             InitaialiseAbyssList();
             Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
@@ -780,7 +782,13 @@ public class MainGame extends Application implements Initializable {
             }));
             new SequentialTransition(intro).play();
             firstClick = false;
-
+//            System.out.println("savedGamePosition = " + savedGamePosition);
+            if(savedGamePosition != 0){
+                System.out.println("can retrieve the game");
+                CommonAnimation.runTranslateTransition(Hero, 240, 0, 2000).play();
+                CommonAnimation.runTranslateTransition(pane2, savedGamePosition, 0, 2000).play();
+                noOfClicks = 5;
+            }
 
         }
 
@@ -941,23 +949,25 @@ public class MainGame extends Application implements Initializable {
     }
 
     private boolean prevGame = false;
-    private double savedGamePosition = 0;
+    private static double savedGamePosition = 0;
 
     public void setUpGame(double pos, int sc, int co){
         prevGame = true;
         System.out.println("Details: " + pos + " " + sc +  " " + co);
-        Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
-            loadGameTransition(pos);
-        }));
-
-        new SequentialTransition(CommonAnimation.delay(1000), intro).play();
+//        Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+//            loadGameTransition(pos);
+//        }));
+//
+//        new SequentialTransition(CommonAnimation.delay(1000), intro).play();
         score = sc;
         coinNumber = co;
 
 //        CoinNumberText.setText(Integer.toString(co));
 //        ScoreLabel.setText(Integer.toString(sc));
         savedGamePosition = pos;
+//        System.out.println("savedGamePosition = " + savedGamePosition);
 
         System.out.println("INSIDE");
     }
+
 }
