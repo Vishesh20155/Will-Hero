@@ -30,7 +30,7 @@
                   <Font name="Comic Sans MS" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="SaveCurrentGame" alignment="CENTER" onMouseEntered="#SaveCurrentGameUnderline" onMouseExited="#SaveCurrentGameRemoveUnderline" prefHeight="44.0" prefWidth="458.0" text="Save current game" textAlignment="CENTER" textFill="#feffff">
+            <Label fx:id="SaveCurrentGame" alignment="CENTER" onMouseClicked="#SaveButtonClicked" onMouseEntered="#SaveCurrentGameUnderline" onMouseExited="#SaveCurrentGameRemoveUnderline" prefHeight="44.0" prefWidth="458.0" text="Save current game" textAlignment="CENTER" textFill="#feffff">
                <font>
                   <Font name="Comic Sans MS" size="24.0" />
                </font>

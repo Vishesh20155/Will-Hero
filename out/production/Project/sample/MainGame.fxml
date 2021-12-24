@@ -50,7 +50,7 @@
             <Image url="@../Images/Clouds.png" />
          </image>
       </ImageView>
-      <Pane fx:id="pane2" layoutY="64.0" minWidth="5000.0" onMouseClicked="#click" prefHeight="536.0" prefWidth="5170.0">
+      <Pane fx:id="pane2" layoutY="64.0" minWidth="5000.0" onMouseClicked="#click" prefHeight="536.0" prefWidth="6825.0">
          <children>
             <ImageView fitHeight="134.0" fitWidth="200.0" translateX="850.0" translateY="370.0">
                <image>
@@ -112,7 +112,7 @@
                   <Image url="@../assets/Islands5.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="115.0" fitWidth="500.0" translateX="4570.0" translateY="370.0">
+            <ImageView fitHeight="115.0" fitWidth="465.0" translateX="4570.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands9.png" />
                </image>
@@ -137,7 +137,7 @@
                   <Image url="@../assets/Orc3.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Orc6" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="3630.0" translateY="310.0">
+            <ImageView fx:id="Orc6" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="5530.0" translateY="310.0">
                <image>
                   <Image url="@../assets/RedOrc1.png" />
                </image>
@@ -254,9 +254,20 @@
                   <Image url="@../assets/TNT.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="TNT2" fitHeight="56.0" fitWidth="56.0" layoutX="3010.0" layoutY="315.0" translateX="3010.0">
+            <ImageView fx:id="TNT2" fitHeight="56.0" fitWidth="56.0" translateX="5300.0" translateY="310.0">
                <image>
                   <Image url="@../assets/TNT.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="103.0" fitWidth="750.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" translateX="5100.0" translateY="370.0">
+               <image>
+                  <Image url="@../assets/Islands1.png" />
+               </image>
+            </ImageView>
+            <Circle fx:id="ExplosionCloud11" fill="#8f6464b8" opacity="0.0" radius="118.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" translateX="5330.0" translateY="310.0" />
+            <ImageView fitHeight="134.0" fitWidth="450.0" translateX="6050.0" translateY="370.0">
+               <image>
+                  <Image url="@../assets/Islands5.png" />
                </image>
             </ImageView>
          </children>

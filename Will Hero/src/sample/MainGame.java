@@ -217,7 +217,13 @@ public class MainGame extends Application implements Initializable {
     private Circle ExplosionCloud1;
 
     @FXML
+    private Circle ExplosionCloud11;
+
+    @FXML
     private ImageView TNT2;
+
+    private static double position;
+    private static int coinNumber = 0;
 
 
 
@@ -275,7 +281,9 @@ public class MainGame extends Application implements Initializable {
         AbyssList.add(-2040F);
         AbyssList.add(-2280F);
         AbyssList.add(-3720F);
-
+        AbyssList.add(-4680F);
+        AbyssList.add(-5520F);
+        AbyssList.add(-5640F);
     }
 
     boolean checkFall(float x){
@@ -291,17 +299,18 @@ public class MainGame extends Application implements Initializable {
     }
 
     void checkChest(){
-        if(pane2.getTranslateX() == -660 || pane2.getTranslateX() == -600){
+        if(pane2.getTranslateX() == -600){
             fade(chest1closed, 0, 500).play();
             fade(chest1open, 1, 500).play();
             heroObject.setWeapon(knife1);
             displayText.setText("Equipped Knife");
             fade(displayText, 1, 1000, true, 4).play();
             Knife.setOpacity(1);
+            score+=4;
             return;
         }
 
-        if(pane2.getTranslateX() == -1500 ||pane2.getTranslateX() == -1560 ){
+        if(pane2.getTranslateX() == -1560 ){
             fade(chest2closed, 0, 500).play();
             fade(chest2open, 1, 500).play();
             heroObject.setWeapon(sword1);
@@ -311,10 +320,11 @@ public class MainGame extends Application implements Initializable {
             fade(displayText, 1, 1000, true, 4).play();
             Sword.setOpacity(1);
             runTranslateTransition(GroupOrc2, 6000, 0, 2000).play();
+            score+=4;
             return;
         }
 
-        if(pane2.getTranslateX() == -2220 || pane2.getTranslateX() == -2160){
+        if(pane2.getTranslateX() == -2160){
             fade(chest3closed, 0, 500).play();
             fade(chest3open, 1, 500).play();
             CoinChest coinChest = new CoinChest();
@@ -322,9 +332,10 @@ public class MainGame extends Application implements Initializable {
             fade(displayText, 1, 1000, true, 4).play();
             heroObject.updateCoins(coinChest.getNumCoins());
             CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + coinChest.getNumCoins()));
-
+            coinNumber += coinChest.getNumCoins();
             runTranslateTransition(CoinGroup, 0, -300, 2000).play();
             fade(CoinGroup, 1, 300, true, 6).play();
+            score+=10;
             return;
         }
 
@@ -342,7 +353,7 @@ public class MainGame extends Application implements Initializable {
     }
 
     private void checkAttack(){
-        if(pane2.getTranslateX() == -900){
+        if(pane2.getTranslateX() == -960){
             knife1.hit(Knife);
             if(Hero.getTranslateY()-GroupOrc1.getTranslateY() < -40) {
                 System.out.println("hitting group failed");
@@ -353,6 +364,8 @@ public class MainGame extends Application implements Initializable {
                 System.out.println("hitting group");
                 groupOrc1Dead = true;
                 runTranslateTransition(GroupOrc1, 6000, 0, 2000).play();
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
+                coinNumber += 4;
             }
 
         }
@@ -372,9 +385,21 @@ public class MainGame extends Application implements Initializable {
                     }
                 }
             }, 3000);
-//            if (pane2.getTranslateX() >= -2640){
-//                death();
-//            }
+        }
+
+        if(pane2.getTranslateX() == -4800){
+            tnt2.explode(TNT2, ExplosionCloud11);
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    fade(ExplosionCloud11, 0.8, 500).play();
+                    if (pane2.getTranslateX() >= -5040){
+                        System.out.println("death from tnt");
+                        death();
+                    }
+                }
+            }, 3000);
         }
     }
 
@@ -421,12 +446,16 @@ public class MainGame extends Application implements Initializable {
 
 
     void checkOrc(){
-        if(pane2.getTranslateX() <= -120 && pane2.getTranslateX() >= -180) {
+        if(pane2.getTranslateX() == -120) {
             System.out.println("check orc function");
             if(Orc1.getTranslateY()<Hero.getTranslateY())
                 death();
-            else
+            else {
                 runTranslateTransition(Orc1, 6000, 0, 2000).play();
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
+                coinNumber+=2;
+                score+=3;
+            }
             return;
         }
 
@@ -434,20 +463,27 @@ public class MainGame extends Application implements Initializable {
             System.out.println("check orc2 function");
             if(Orc2.getTranslateY()<Hero.getTranslateY())
                 death();
-            else
+            else {
                 runTranslateTransition(Orc2, 6000, 0, 2000).play();
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
+                coinNumber += 2;
+                score+=3;
+            }
             return;
         }
 
         // Changed the group orc 1 to a better coordinate
 
-        if(pane2.getTranslateX() <= -1040 && pane2.getTranslateX() >= -1140) {
+        if(pane2.getTranslateX() == -1080) {
 
             System.out.println("check GroupOrc1 function");
             if(GroupOrc1.getTranslateY()<Hero.getTranslateY() && (!groupOrc1Dead))
                 death();
             else {
                 runTranslateTransition(GroupOrc1, 6000, 0, 2000).play();
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
+                coinNumber += 4;
+                score+=3;
             }
             return;
 
@@ -458,8 +494,12 @@ public class MainGame extends Application implements Initializable {
             System.out.println("check GroupOrc2 function");
             if(GroupOrc2.getTranslateY()<Hero.getTranslateY())
                 death();
-            else
+            else {
                 runTranslateTransition(GroupOrc2, 6000, 0, 2000).play();
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
+                coinNumber += 4;
+                score+=3;
+            }
             return;
 
         }
@@ -474,7 +514,7 @@ public class MainGame extends Application implements Initializable {
 //
 //        }
 
-        if(pane2.getTranslateX() <= -1860 && pane2.getTranslateX() >= -1960) {
+        if(pane2.getTranslateX() == -1920) {
 
             System.out.println("check Orc3 function");
             if(Orc3.getTranslateY()<Hero.getTranslateY())
@@ -487,7 +527,9 @@ public class MainGame extends Application implements Initializable {
                     runTranslateTransition(Orc3, 6000, 0, 2000).play();
                 }));
                 new SequentialTransition(intro, next).play();
-
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
+                coinNumber +=2;
+                score+=3;
             }
             return;
 
@@ -503,46 +545,62 @@ public class MainGame extends Application implements Initializable {
 //
 //        }
 
-        if(pane2.getTranslateX() <= -2900 && pane2.getTranslateX() >= -3020) {
+        if(pane2.getTranslateX() == -3000) {
 
             System.out.println("check Orc5 function");
             if(Orc5.getTranslateY()<Hero.getTranslateY())
                 death();
-            else
+            else {
                 runTranslateTransition(Orc5, 6000, 0, 2000).play();
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
+                coinNumber += 2;
+                score+=3;
+            }
             return;
 
         }
 
-        if(pane2.getTranslateX() <= -3100 && pane2.getTranslateX() >= -3200) {
+        if(pane2.getTranslateX() == -5040) {
 
             System.out.println("check Orc6 function");
             if(Orc6.getTranslateY()<Hero.getTranslateY())
                 death();
-            else
+            else {
                 runTranslateTransition(Orc6, 6000, 0, 2000).play();
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
+                coinNumber += 2;
+                score+=3;
+            }
             return;
 
         }
 
-        if(pane2.getTranslateX() <= -3400 && pane2.getTranslateX() >= -3500) {
+        if(pane2.getTranslateX() == -3480) {
 
             System.out.println("check Orc7 function");
             if(Orc7.getTranslateY()<Hero.getTranslateY())
                 death();
-            else
+            else {
                 runTranslateTransition(Orc7, 6000, 0, 2000).play();
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
+                coinNumber += 2;
+                score+=3;
+            }
             return;
 
         }
 
-        if(pane2.getTranslateX() <= -4280 && pane2.getTranslateX() >= -4400) {
+        if(pane2.getTranslateX() == -4320) {
 
             System.out.println("check GroupOrc3 function");
             if(GroupOrc3.getTranslateY()<Hero.getTranslateY())
                 death();
-            else
+            else {
                 runTranslateTransition(GroupOrc3, 6000, 0, 2000).play();
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
+                coinNumber += 4;
+                score+=3;
+            }
             return;
 
         }
@@ -621,6 +679,11 @@ public class MainGame extends Application implements Initializable {
         score++;
 
         ScoreLabel.setText(Integer.toString(score));
+        CoinNumberText.setText(Integer.toString(coinNumber));
+        if (prevGame){
+            System.out.println("CHECK");
+            pane2.setTranslateX(savedGamePosition);
+        }
 
         if(firstClick)
         {
@@ -680,6 +743,7 @@ public class MainGame extends Application implements Initializable {
 
     }
 
+
     @FXML
     void click2(MouseEvent event) {
         System.out.println("DRAGGED");
@@ -727,6 +791,7 @@ public class MainGame extends Application implements Initializable {
     }
 
 
+
     //This function to be placed in Hero Class
     private void moveHeroForward(){
         runTranslateTransitionForHero(Hero, 60, 0, 100).play();
@@ -762,6 +827,8 @@ public class MainGame extends Application implements Initializable {
         System.out.println("Hero Translate X: " + Hero.getTranslateX());
         System.out.println("Hero Translate Y: " + Hero.getTranslateY());
         System.out.println("Pane 2 Translate X: " + pane2.getTranslateX());
+        position = pane2.getTranslateX();
+        System.out.println("position " + position);
         System.out.println();
     }
 
@@ -770,4 +837,41 @@ public class MainGame extends Application implements Initializable {
         runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
     }
 
+    public static double getHeroPosition(){
+        return position;
+    }
+
+    public static int getGameScore(){
+        return score;
+    }
+
+    public static int getGameCoins(){
+        return coinNumber;
+    }
+
+    private void loadGameTransition(double pos){
+        runTranslateTransition(Hero, pos, 0, 1000).play();
+        runTranslateTransition(pane2, pos, 0, 1000).play();
+    }
+
+    private boolean prevGame = false;
+    private double savedGamePosition = 0;
+
+    public void setUpGame(double pos, int sc, int co){
+        prevGame = true;
+        System.out.println("Details: " + pos + " " + sc +  " " + co);
+        Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+            loadGameTransition(pos);
+        }));
+
+        new SequentialTransition(CommonAnimation.delay(1000), intro).play();
+        score = sc;
+        coinNumber = co;
+
+//        CoinNumberText.setText(Integer.toString(co));
+//        ScoreLabel.setText(Integer.toString(sc));
+        savedGamePosition = pos;
+
+        System.out.println("INSIDE");
+    }
 }

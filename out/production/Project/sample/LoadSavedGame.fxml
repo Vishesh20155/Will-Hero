@@ -152,7 +152,7 @@
       </AnchorPane>
       <AnchorPane layoutY="545.0" prefHeight="53.0" prefWidth="898.0">
          <children>
-            <TextField layoutX="305.0" prefHeight="54.0" prefWidth="106.0" promptText="Game ID">
+            <TextField fx:id="GameIDinput" layoutX="305.0" prefHeight="54.0" prefWidth="106.0" promptText="Game ID">
                <font>
                   <Font size="21.0" />
                </font>

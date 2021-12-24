@@ -10,10 +10,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,6 +38,8 @@ public class PauseMenuController extends Application implements Initializable {
 
     @FXML
     private Label SaveCurrentGame;
+
+
 
 
     @Override
@@ -134,5 +140,25 @@ public class PauseMenuController extends Application implements Initializable {
     void ResumeClicked(MouseEvent event) {
         Stage newWindow = (Stage) LoadPreviouslySavedGame.getScene().getWindow();
         newWindow.close();
+    }
+
+    @FXML
+    void SaveButtonClicked(MouseEvent event) {
+        double x = MainGame.getHeroPosition();
+        int sc = MainGame.getGameScore();
+        int co = MainGame.getGameCoins();
+        System.out.println("Location Received: " + x);
+        String fileName = "filename.txt";
+
+        try {
+            BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true));
+            out.write(String.valueOf(x) + "\n");
+            out.write(String.valueOf(sc) + "\n");
+            out.write(String.valueOf(co) + "\n");
+            out.close();
+        }
+        catch (IOException e) {
+            System.out.println("Exception Occurred" + e);
+        }
     }
 }
