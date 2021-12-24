@@ -135,6 +135,10 @@ public class MainGame extends Application implements Initializable, Serializable
     @FXML
     private ImageView Orc2;
 
+    @FXML
+    private ImageView BossOrc;
+
+
 //    @FXML
 //    private Pane pane3;
 
@@ -521,7 +525,7 @@ public class MainGame extends Application implements Initializable, Serializable
             if(Orc1.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
-                runTranslateTransition(Orc1, 6000, 0, 2000).play();
+                runTranslateTransition(Orc1, 9000, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
                 coinNumber+=2;
                 score+=3;
@@ -529,7 +533,7 @@ public class MainGame extends Application implements Initializable, Serializable
             return;
         }
 
-        if(Hero.getTranslateX()==360 && pane2.getTranslateX() == 0) {
+        if(Hero.getTranslateX()==360 && pane2.getTranslateX() == 0) { //pane2.getTranslateX() == -5580
             System.out.println("check orc2 function");
             if(Orc2.getTranslateY()<Hero.getTranslateY())
                 death();
@@ -550,7 +554,7 @@ public class MainGame extends Application implements Initializable, Serializable
             if(GroupOrc1.getTranslateY()<Hero.getTranslateY() && (GroupOrc1.getTranslateX() == -1080))
                 death();
             else {
-                runTranslateTransition(GroupOrc1, 6000, 0, 2000).play();
+                runTranslateTransition(GroupOrc1, 8000, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
                 coinNumber += 4;
                 score+=3;
@@ -565,7 +569,7 @@ public class MainGame extends Application implements Initializable, Serializable
             if(GroupOrc2.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
-                runTranslateTransition(GroupOrc2, 6000, 0, 2000).play();
+                runTranslateTransition(GroupOrc2, 8000, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
                 coinNumber += 4;
                 score+=3;
