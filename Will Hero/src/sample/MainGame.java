@@ -221,6 +221,13 @@ public class MainGame extends Application implements Initializable {
     private ImageView chest5open;
 
     @FXML
+    private ImageView chest6closed;
+
+    @FXML
+    private ImageView chest6open;
+
+
+    @FXML
     private ImageView TNT1;
 
     @FXML
@@ -364,6 +371,18 @@ public class MainGame extends Application implements Initializable {
             Sword.setFitHeight(80);
             return;
         }
+
+        if( pane2.getTranslateX() == -4800){
+            fade(chest5closed, 0, 500).play();
+            fade(chest5open, 1, 500).play();
+            Sword.setOpacity(0);
+            heroObject.setWeapon(knife2);
+            displayText.setText("Equipped Knife ");
+            fade(displayText, 1, 1000, true, 4).play();
+            Knife2.setOpacity(1);
+            score+=4;
+            return;
+        }
     }
 
     private void checkAttack(){
@@ -378,6 +397,24 @@ public class MainGame extends Application implements Initializable {
                 System.out.println("hitting group");
                 groupOrc1Dead = true;
                 runTranslateTransition(GroupOrc1, 6000, 0, 2000).play();
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
+                coinNumber += 4;
+            }
+
+        }
+
+        if(pane2.getTranslateX() == -4920){
+            knife2.hit(Knife2);
+            if(Hero.getTranslateY()-Orc6.getTranslateY() < -40) {
+                System.out.println("hitting Orc6 failed");
+                return;
+            }
+            else
+            {
+                System.out.println("hitting Orc6");
+                //Fix groupOrc1 variable
+                groupOrc1Dead = true;
+                runTranslateTransition(Orc6, 6000, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
                 coinNumber += 4;
             }
@@ -401,14 +438,14 @@ public class MainGame extends Application implements Initializable {
             }, 3000);
         }
 
-        if(pane2.getTranslateX() == -4800){
+        if(pane2.getTranslateX() == -5760){
             tnt2.explode(TNT2, ExplosionCloud11);
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
                     fade(ExplosionCloud11, 0.8, 500).play();
-                    if (pane2.getTranslateX() >= -5040){
+                    if (pane2.getTranslateX() >= -6000){
                         System.out.println("death from tnt");
                         death();
                     }
@@ -548,6 +585,8 @@ public class MainGame extends Application implements Initializable {
             return;
 
         }
+
+
 //        if(pane2.getTranslateX() <= -2500 && pane2.getTranslateX() >= -2600) {
 //
 //            System.out.println("check Orc4 function");
@@ -565,9 +604,15 @@ public class MainGame extends Application implements Initializable {
             if(Orc5.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
-                runTranslateTransition(Orc5, 6000, 0, 2000).play();
+                Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    sword1.hit(Sword);
+                }));
+                Timeline next = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    runTranslateTransition(Orc5, 6000, 0, 2000).play();
+                }));
+                new SequentialTransition(intro, next).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
-                coinNumber += 2;
+                coinNumber +=2;
                 score+=3;
             }
             return;
@@ -577,7 +622,7 @@ public class MainGame extends Application implements Initializable {
         if(pane2.getTranslateX() == -5040) {
 
             System.out.println("check Orc6 function");
-            if(Orc6.getTranslateY()<Hero.getTranslateY())
+            if(Orc6.getTranslateY()<Hero.getTranslateY() && Orc6.getTranslateX() == -5040)
                 death();
             else {
                 runTranslateTransition(Orc6, 6000, 0, 2000).play();
@@ -595,9 +640,15 @@ public class MainGame extends Application implements Initializable {
             if(Orc7.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
-                runTranslateTransition(Orc7, 6000, 0, 2000).play();
+                Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    sword1.hit(Sword);
+                }));
+                Timeline next = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    runTranslateTransition(Orc7, 6000, 0, 2000).play();
+                }));
+                new SequentialTransition(intro, next).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
-                coinNumber += 2;
+                coinNumber +=2;
                 score+=3;
             }
             return;
@@ -610,9 +661,15 @@ public class MainGame extends Application implements Initializable {
             if(GroupOrc3.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
-                runTranslateTransition(GroupOrc3, 6000, 0, 2000).play();
-                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
-                coinNumber += 4;
+                Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    sword1.hit(Sword);
+                }));
+                Timeline next = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    runTranslateTransition(GroupOrc3, 6000, 0, 2000).play();
+                }));
+                new SequentialTransition(intro, next).play();
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
+                coinNumber +=2;
                 score+=3;
             }
             return;

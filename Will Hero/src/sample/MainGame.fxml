@@ -290,6 +290,16 @@
                   <Image url="@../assets/ChestClosed.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="chest6closed" fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" translateX="6700.0" translateY="320.0">
+               <image>
+                  <Image url="@../assets/ChestClosed.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="chest6open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="6700.0" translateY="320.0">
+               <image>
+                  <Image url="@../assets/ChestOpen.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Group fx:id="Hero" translateX="120.0" translateY="365.0">
