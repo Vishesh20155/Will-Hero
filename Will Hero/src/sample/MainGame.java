@@ -281,19 +281,23 @@ public class MainGame extends Application implements Initializable {
         runTranslateTransition(cloud2, 1610, 0, 30000, Timeline.INDEFINITE, false).play();
     }
 
-    static int noOfClicks = 0;
+    int noOfClicks = 0;
 
     private void InitaialiseAbyssList(){
-
+        AbyssList.add(-360F);
         AbyssList.add(-600F);
-        AbyssList.add(-840F);
-        AbyssList.add(-1320F);
-        AbyssList.add(-2040F);
-        AbyssList.add(-2280F);
+        AbyssList.add(-960F);
+        AbyssList.add(-1400F);
+        AbyssList.add(-1800F);
+//        AbyssList.add(-2280F);
+        AbyssList.add(-2400F);
+        AbyssList.add(-2760F);
+        AbyssList.add(-3360F);
         AbyssList.add(-3720F);
-        AbyssList.add(-4680F);
+        AbyssList.add(-4080F);
+        AbyssList.add(-5400F);
         AbyssList.add(-5520F);
-        AbyssList.add(-5640F);
+        AbyssList.add(-6120F);
     }
 
     boolean checkFall(float x){
@@ -334,7 +338,7 @@ public class MainGame extends Application implements Initializable {
             return;
         }
 
-        if(pane2.getTranslateX() == -2160){
+        if(pane2.getTranslateX() == -2280){
             fade(chest3closed, 0, 500).play();
             fade(chest3open, 1, 500).play();
             CoinChest coinChest = new CoinChest();
@@ -350,7 +354,7 @@ public class MainGame extends Application implements Initializable {
         }
 
 
-        if(pane2.getTranslateX() == -3900 || pane2.getTranslateX() == -3840){
+        if( pane2.getTranslateX() == -3840){
             fade(chest4closed, 0, 500).play();
             fade(chest4open, 1, 500).play();
             heroObject.getWeapon().upgradeWeapon();
@@ -363,7 +367,7 @@ public class MainGame extends Application implements Initializable {
     }
 
     private void checkAttack(){
-        if(pane2.getTranslateX() == -960){
+        if(pane2.getTranslateX() == -1080){
             knife1.hit(Knife);
             if(Hero.getTranslateY()-GroupOrc1.getTranslateY() < -40) {
                 System.out.println("hitting group failed");
@@ -456,7 +460,7 @@ public class MainGame extends Application implements Initializable {
 
 
     void checkOrc(){
-        if(pane2.getTranslateX() == -120) {
+        if(pane2.getTranslateX() == -240) {
             System.out.println("check orc function");
             if(Orc1.getTranslateY()<Hero.getTranslateY())
                 death();
@@ -469,7 +473,7 @@ public class MainGame extends Application implements Initializable {
             return;
         }
 
-        if(Hero.getTranslateX()==300) {
+        if(Hero.getTranslateX()==360 && pane2.getTranslateX() == 0) {
             System.out.println("check orc2 function");
             if(Orc2.getTranslateY()<Hero.getTranslateY())
                 death();
@@ -690,10 +694,7 @@ public class MainGame extends Application implements Initializable {
 
         ScoreLabel.setText(Integer.toString(score));
         CoinNumberText.setText(Integer.toString(coinNumber));
-        if (prevGame){
-            System.out.println("CHECK");
-            pane2.setTranslateX(savedGamePosition);
-        }
+
 
         if(firstClick)
         {

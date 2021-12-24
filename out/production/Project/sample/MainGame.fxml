@@ -254,7 +254,7 @@
                   <Image url="@../assets/TNT.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="TNT2" fitHeight="56.0" fitWidth="56.0" translateX="5300.0" translateY="310.0">
+            <ImageView fx:id="TNT2" fitHeight="56.0" fitWidth="56.0" translateX="6220.0" translateY="310.0">
                <image>
                   <Image url="@../assets/TNT.png" />
                </image>
@@ -264,7 +264,7 @@
                   <Image url="@../assets/Islands1.png" />
                </image>
             </ImageView>
-            <Circle fx:id="ExplosionCloud11" fill="#8f6464b8" opacity="0.0" radius="118.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" translateX="5330.0" translateY="310.0" />
+            <Circle fx:id="ExplosionCloud11" fill="#8f6464b8" opacity="0.0" radius="118.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" translateX="6230.0" translateY="310.0" />
             <ImageView fitHeight="134.0" fitWidth="450.0" translateX="6050.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands5.png" />
@@ -273,6 +273,21 @@
             <ImageView fitHeight="103.0" fitWidth="750.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" translateX="6600.0" translateY="370.0">
                <image>
                   <Image url="@../assets/Islands1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="chest5open" fitHeight="65.0" fitWidth="70.0" opacity="0.0" pickOnBounds="true" translateX="5200.0" translateY="310.0">
+               <image>
+                  <Image url="@../assets/ChestOpen.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="chest4open1" fitHeight="65.0" fitWidth="70.0" layoutY="10.0" opacity="0.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assets/ChestOpen.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="chest5closed" fitHeight="65.0" fitWidth="70.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" translateX="5200.0" translateY="310.0">
+               <image>
+                  <Image url="@../assets/ChestClosed.png" />
                </image>
             </ImageView>
          </children>
@@ -290,6 +305,11 @@
                </image>
             </ImageView>
             <ImageView fx:id="Knife" fitHeight="60.0" fitWidth="200.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" translateX="20.0" translateY="-20.0">
+               <image>
+                  <Image url="@../assets/WeaponKnife.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Knife2" fitHeight="60.0" fitWidth="200.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" translateX="20.0" translateY="-10.0">
                <image>
                   <Image url="@../assets/WeaponKnife.png" />
                </image>
