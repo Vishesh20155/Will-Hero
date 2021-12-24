@@ -184,6 +184,9 @@ public class MainGame extends Application implements Initializable {
     private Group CoinGroup;
 
     @FXML
+    private Group CoinGroup1;
+
+    @FXML
     private Text CoinNumberText;
 
     @FXML
@@ -528,7 +531,7 @@ public class MainGame extends Application implements Initializable {
         if(pane2.getTranslateX() == -1080) {
 
             System.out.println("check GroupOrc1 function");
-            if(GroupOrc1.getTranslateY()<Hero.getTranslateY() && (!groupOrc1Dead))
+            if(GroupOrc1.getTranslateY()<Hero.getTranslateY() && (GroupOrc1.getTranslateX() == -1200))
                 death();
             else {
                 runTranslateTransition(GroupOrc1, 6000, 0, 2000).play();
