@@ -229,7 +229,7 @@
                   <Image url="@../assets/ChestClosed.png" />
                </image>
             </ImageView>
-            <Group fx:id="CoinGroup" opacity="0.0">
+            <Group fx:id="CoinGroup" opacity="0.0" translateX="35.0">
                <children>
                   <ImageView fitHeight="22.0" fitWidth="37.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" translateX="2650.0" translateY="250.0">
                      <image>
@@ -300,6 +300,25 @@
                   <Image url="@../assets/ChestOpen.png" />
                </image>
             </ImageView>
+            <Group fx:id="CoinGroup1" layoutX="10.0" translateX="2550.0">
+               <children>
+                  <ImageView fitHeight="22.0" fitWidth="37.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" translateX="2650.0" translateY="250.0">
+                     <image>
+                        <Image url="@../assets/Coin.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="22.0" fitWidth="37.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" translateX="2660.0" translateY="225.0">
+                     <image>
+                        <Image url="@../assets/Coin.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="22.0" fitWidth="37.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" translateX="2675.0" translateY="250.0">
+                     <image>
+                        <Image url="@../assets/Coin.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Group>
          </children>
       </Pane>
       <Group fx:id="Hero" translateX="120.0" translateY="365.0">
