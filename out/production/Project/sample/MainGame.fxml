@@ -300,7 +300,7 @@
                   <Image url="@../assets/ChestOpen.png" />
                </image>
             </ImageView>
-            <Group fx:id="CoinGroup1" layoutX="10.0" translateX="2550.0">
+            <Group fx:id="CoinGroup1" layoutX="10.0" opacity="0.0" translateX="4050.0">
                <children>
                   <ImageView fitHeight="22.0" fitWidth="37.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" translateX="2650.0" translateY="250.0">
                      <image>

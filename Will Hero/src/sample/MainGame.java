@@ -386,6 +386,21 @@ public class MainGame extends Application implements Initializable {
             score+=4;
             return;
         }
+
+        if(pane2.getTranslateX() == -6240){
+            fade(chest6closed, 0, 500).play();
+            fade(chest6open, 1, 500).play();
+            CoinChest coinChest = new CoinChest();
+            displayText.setText("Received " + coinChest.getNumCoins() + "coins!!");
+            fade(displayText, 1, 1000, true, 4).play();
+            heroObject.updateCoins(coinChest.getNumCoins());
+            CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + coinChest.getNumCoins()));
+            coinNumber += coinChest.getNumCoins();
+            runTranslateTransition(CoinGroup1, 0, -300, 2000).play();
+            fade(CoinGroup1, 1, 300, true, 6).play();
+            score+=10;
+            return;
+        }
     }
 
     private void checkAttack(){
