@@ -324,7 +324,7 @@
                   <Image url="@../assets/Islands1.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="BossOrc" fitHeight="200.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true" translateX="7778.0" translateY="170.0">
+            <ImageView fx:id="BossOrc" fitHeight="200.0" fitWidth="227.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" translateX="7920.0" translateY="170.0">
                <image>
                   <Image url="@../assets/OrcBoss.png" />
                </image>

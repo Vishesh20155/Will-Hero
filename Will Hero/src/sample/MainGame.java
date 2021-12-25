@@ -104,6 +104,12 @@ public class MainGame extends Application implements Initializable, Serializable
     private TNT tnt2 = new TNT();
     private ArrayList<Float> AbyssList = new ArrayList<Float>();
     private boolean AbyssFallorNot = false;
+    private boolean HeroKilledbyBoss = false;
+    private boolean BossKilledbyHero = false;
+    private final int NoofHitsforBosstoDie = 2;
+    private int NoofHitsonBoss = 0;
+
+
 
     @FXML
     private Group Hero;
@@ -313,6 +319,7 @@ public class MainGame extends Application implements Initializable, Serializable
         AbyssList.add(-5400F);
         AbyssList.add(-5520F);
         AbyssList.add(-6120F);
+        AbyssList.add(-6960F);
     }
 
     boolean checkFall(float x){
@@ -445,6 +452,95 @@ public class MainGame extends Application implements Initializable, Serializable
         }
     }
 
+    void BossOrcForwardMovement(){
+        runTranslateTransition(BossOrc , -60 , -60 , 300).play();
+        Timer timer = new Timer();
+
+        timer.schedule(new TimerTask() {
+                           @Override
+                           public void run() {
+
+                               runTranslateTransition(BossOrc , -60 , 60 , 300  ).play();
+
+
+                           }
+                       }
+                , 300);
+
+
+
+    }
+    void BossBackwardMovement(){
+
+        runTranslateTransition(BossOrc , 60 , -60 , 300).play();
+        Timer timer = new Timer();
+
+        timer.schedule(new TimerTask() {
+                           @Override
+                           public void run() {
+
+                               runTranslateTransition(BossOrc , 60 , 60 , 300  ).play();
+
+
+                           }
+                       }
+                , 300);
+
+
+
+
+    }
+
+
+    void checkBoss(){
+
+        if(pane2.getTranslateX() == -7080){
+            fade(BossOrc , 1 , 300).play();
+            BossOrcForwardMovement();
+            //BossOrcForwardMovement();
+            runTranslateTransition(BossOrc , 0 , -60 , 800 , Timeline.INDEFINITE , true).play();
+        }
+        if(pane2.getTranslateX() == -7320 && Hero.getTranslateY()-150<=BossOrc.getTranslateY() ){
+            System.out.println("First hit on boss orc !");
+            BossBackwardMovement();
+            //runTranslateTransition(BossOrc , 0 , -60 , 800 , Timeline.INDEFINITE , true).play();
+        }
+        if (pane2.getTranslateX() == -7320 && Hero.getTranslateY()-150>BossOrc.getTranslateY()){
+            System.out.println("Death from boss orc");
+            death();
+
+        }
+        if(pane2.getTranslateX() == -7440 && Hero.getTranslateY() - 150 <= BossOrc.getTranslateY()){
+            System.out.println("Hit number 2 on boss orc");
+            BossBackwardMovement();
+            //runTranslateTransition(BossOrc , 0 , -60 , 800 , Timeline.INDEFINITE , true).play();
+        }
+
+        if (pane2.getTranslateX() == -7440 && Hero.getTranslateY() - 150 > BossOrc.getTranslateY()){
+            System.out.println("Death fro boss orc");
+            death();
+        }
+
+        if(pane2.getTranslateX() == -7560 && Hero.getTranslateY() - 250 <= BossOrc.getTranslateY()){
+            System.out.println("Hit number 3 on boss orc . Boss orc death!!!");
+            runTranslateTransition(BossOrc , 0 ,10000 , 4000).play();
+        }
+
+        if (pane2.getTranslateX() == -7560 && Hero.getTranslateY() - 250 > BossOrc.getTranslateY()){
+            System.out.println("Death fro boss orc");
+            death();
+        }
+
+
+//        if(pane2.getTranslateX() == -7320 && Hero.getTranslateY() <= BossOrc.getTranslateY()){
+//            System.out.println("Boss orc hit once");
+//            NoofHitsonBoss++;
+//            BossBackwardMovement();
+//        }
+//
+//        else if (pane2.getTranslateX() == )
+    }
+
     void checkObstacle(){
         if(pane2.getTranslateX() == -2520){
             tnt1.explode(TNT1, ExplosionCloud1);
@@ -516,7 +612,15 @@ public class MainGame extends Application implements Initializable, Serializable
         }
         //return AbyssFallorNot;
 
-        }
+    }
+
+
+
+
+
+
+
+
 
 
     void checkOrc(){
@@ -836,6 +940,7 @@ public class MainGame extends Application implements Initializable, Serializable
             checkAttack();
             checkObstacle();
             checkAbyss((float) pane2.getTranslateX());
+            checkBoss();
         }
         printCoordinateDetails();
 
@@ -884,6 +989,7 @@ public class MainGame extends Application implements Initializable, Serializable
             checkChest();
             checkAttack();
             checkObstacle();
+            checkBoss();
         }
         printCoordinateDetails();
     }
