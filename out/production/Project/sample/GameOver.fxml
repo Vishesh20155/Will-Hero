@@ -50,14 +50,6 @@
       </Pane>
       <Pane layoutX="81.0" layoutY="348.0" prefHeight="336.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button contentDisplay="CENTER" layoutX="278.0" layoutY="215.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="364.0" style="-fx-background-color: #FFA500#FFA500;" text="Resurrect (25 Coins)" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="33.0" />
-               </font>
-               <effect>
-                  <ColorAdjust />
-               </effect>
-            </Button>
             <ImageView fitHeight="89.0" fitWidth="106.0" layoutX="209.0" layoutY="50.0" onMouseEntered="#underlinePlayAgainText" onMouseExited="#removeUnderlinePlayAgainText" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/play-button-arrowhead.png" />
@@ -83,6 +75,19 @@
                   <Image url="@../Images/Hero.png" />
                </image>
             </ImageView>
+            <Text fx:id="Message" fill="RED" layoutX="33.0" layoutY="234.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not enough coins for Resurrection" textAlignment="CENTER" wrappingWidth="843.8776245117188">
+               <font>
+                  <Font size="71.0" />
+               </font>
+            </Text>
+            <Button fx:id="ResurrectButton" contentDisplay="CENTER" layoutX="278.0" layoutY="215.0" mnemonicParsing="false" onMouseClicked="#ResurrectClicked" prefHeight="62.0" prefWidth="364.0" style="-fx-background-color: #FFA500#FFA500;" text="Resurrect (35 Coins)" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="33.0" />
+               </font>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+            </Button>
          </children>
       </Pane>
    </children>

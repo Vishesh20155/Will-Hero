@@ -426,7 +426,7 @@ public class MainGame extends Application implements Initializable, Serializable
             {
                 System.out.println("hitting group");
                 groupOrc1Dead = true;
-                runTranslateTransition(GroupOrc1, 6000, 0, 2000).play();
+                runTranslateTransition(GroupOrc1, 8000, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
                 coinNumber += 4;
             }
@@ -492,7 +492,7 @@ public class MainGame extends Application implements Initializable, Serializable
     }
 
 
-    void checkBoss(){
+    void checkBoss() throws IOException {
 
         if(pane2.getTranslateX() == -7080){
             fade(BossOrc , 1 , 300).play();
@@ -551,7 +551,11 @@ public class MainGame extends Application implements Initializable, Serializable
                     fade(ExplosionCloud1, 0.8, 500).play();
                     if (pane2.getTranslateX() >= -2760){
                         System.out.println("death from tnt");
-                        death();
+                        try {
+                            death();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }, 3000);
@@ -566,7 +570,11 @@ public class MainGame extends Application implements Initializable, Serializable
                     fade(ExplosionCloud11, 0.8, 500).play();
                     if (pane2.getTranslateX() >= -6000){
                         System.out.println("death from tnt");
-                        death();
+                        try {
+                            death();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }, 3000);
@@ -603,7 +611,11 @@ public class MainGame extends Application implements Initializable, Serializable
                             System.out.println("Inside timer thread 2");
                             System.out.println(x);
                             //AbyssFallorNot = true;
-                            death();
+                            try {
+                                death();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
 
                         }
                     }
@@ -623,7 +635,7 @@ public class MainGame extends Application implements Initializable, Serializable
 
 
 
-    void checkOrc(){
+    void checkOrc() throws IOException {
         if(pane2.getTranslateX() == -240) {
             System.out.println("check orc function");
             if(Orc1.getTranslateY()<Hero.getTranslateY())
@@ -871,7 +883,7 @@ public class MainGame extends Application implements Initializable, Serializable
     */
 
     @FXML
-    void click(MouseEvent event) throws InterruptedException {
+    void click(MouseEvent event) throws InterruptedException, IOException {
 //        printCoordinateDetails();
 
         score++;
@@ -948,7 +960,7 @@ public class MainGame extends Application implements Initializable, Serializable
 
 
     @FXML
-    void click2(MouseEvent event) {
+    void click2(MouseEvent event) throws IOException {
         System.out.println("DRAGGED");
 
         score+=2;
@@ -1036,9 +1048,15 @@ public class MainGame extends Application implements Initializable, Serializable
         System.out.println();
     }
 
-    private void death(){
+    private void death() throws IOException {
         System.out.println("death");
         runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
+        try{
+            showGameOver();
+        }
+        finally {
+
+        }
     }
 
     public static double getHeroPosition(){
@@ -1078,6 +1096,36 @@ public class MainGame extends Application implements Initializable, Serializable
 //        System.out.println("savedGamePosition = " + savedGamePosition);
 
         System.out.println("INSIDE");
+    }
+
+    public static int getCoins(){
+        return coinNumber;
+    }
+
+    public static void setCoins(){
+        coinNumber -= 35;
+    }
+
+    private void showGameOver() throws IOException {
+        Parent secondaryLayout = FXMLLoader.load(getClass().getResource("GameOver.fxml"));
+
+        Scene secondScene = new Scene(secondaryLayout);
+
+        Stage current_stage = new Stage();
+        current_stage.setTitle("GameOver Screen");
+        current_stage.setScene(secondScene);
+        current_stage.show();
+    }
+
+    private void showGameWon() throws IOException {
+        Parent secondaryLayout = FXMLLoader.load(getClass().getResource("Win.fxml"));
+
+        Scene secondScene = new Scene(secondaryLayout);
+
+        Stage current_stage = new Stage();
+        current_stage.setTitle("Game Won Screen");
+        current_stage.setScene(secondScene);
+        current_stage.show();
     }
 
 }

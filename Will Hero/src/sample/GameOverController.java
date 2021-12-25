@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -24,6 +25,12 @@ public class GameOverController extends Application implements Initializable{
 
     @FXML
     private ImageView FallingOrc;
+
+    @FXML
+    private Button ResurrectButton;
+
+    @FXML
+    private Text Message;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -64,5 +71,18 @@ public class GameOverController extends Application implements Initializable{
         CommonAnimation.delay(2000).play();
         CommonAnimation.runTranslateTransition(FallingOrc, 0, 320, 2000).play();
         System.out.println("hello");
+    }
+
+    @FXML
+    void ResurrectClicked(MouseEvent event) {
+        if(MainGame.getCoins() >= 35){
+            MainGame.setCoins();
+            Stage thisStage = (Stage) ResurrectButton.getScene().getWindow();
+            thisStage.close();
+        }
+        else {
+            ResurrectButton.setOpacity(0);
+            Message.setOpacity(1);
+        }
     }
 }
