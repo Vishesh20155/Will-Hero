@@ -32,6 +32,22 @@ public class GameOverController extends Application implements Initializable{
     @FXML
     private Text Message;
 
+    @FXML
+    private Button showScoreButton;
+
+    @FXML
+    private Text NoOfCoinsText;
+
+    @FXML
+    private Text CoinsHeadingText;
+
+    @FXML
+    private Text ScoreHeadingText;
+
+    @FXML
+    private Text ScoreText;
+
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("GameOver.fxml"));
@@ -84,5 +100,16 @@ public class GameOverController extends Application implements Initializable{
             ResurrectButton.setOpacity(0);
             Message.setOpacity(1);
         }
+    }
+
+    @FXML
+    void showScoreButtonClicked(MouseEvent event) {
+        showScoreButton.setOpacity(0);
+        NoOfCoinsText.setOpacity(1);
+        ScoreText.setOpacity(1);
+        ScoreHeadingText.setOpacity(1);
+        CoinsHeadingText.setOpacity(1);
+        ScoreText.setText(Integer.toString(MainGame.getGameScore()));
+        NoOfCoinsText.setText(Integer.toString(MainGame.getCoins()));
     }
 }

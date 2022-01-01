@@ -16,12 +16,12 @@
    <children>
       <Pane prefHeight="235.0" prefWidth="899.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text fill="#9f0acc" layoutX="180.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SCORE" wrappingWidth="179.3891372680664">
+            <Text fx:id="ScoreHeadingText" fill="#9f0acc" layoutX="180.0" layoutY="164.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SCORE" wrappingWidth="179.3891372680664">
                <font>
                   <Font name="Comic Sans MS" size="40.0" />
                </font>
             </Text>
-            <Text fill="#15b915" layoutX="204.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23" wrappingWidth="113.801513671875">
+            <Text fx:id="ScoreText" fill="#15b915" layoutX="204.0" layoutY="232.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23" wrappingWidth="113.801513671875">
                <font>
                   <Font size="70.0" />
                </font>
@@ -31,16 +31,21 @@
                   <Font name="Comic Sans MS" size="65.0" />
                </font>
             </Text>
-            <Text fill="#9f0acc" layoutX="603.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COINS" wrappingWidth="179.3891372680664">
+            <Text fx:id="CoinsHeadingText" fill="#9f0acc" layoutX="603.0" layoutY="161.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COINS" wrappingWidth="179.3891372680664">
                <font>
                   <Font name="Comic Sans MS" size="40.0" />
                </font>
             </Text>
-            <Text fill="#15b915" layoutX="639.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" wrappingWidth="78.59674072265625">
+            <Text fx:id="NoOfCoinsText" fill="#15b915" layoutX="639.0" layoutY="233.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" wrappingWidth="78.59674072265625">
                <font>
                   <Font size="70.0" />
                </font>
             </Text>
+            <Button fx:id="showScoreButton" layoutX="39.0" layoutY="63.0" mnemonicParsing="false" onMouseClicked="#showScoreButtonClicked" prefHeight="125.0" prefWidth="185.0" text="SHOW SCORE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Button>
             <ImageView fx:id="FallingOrc" fitHeight="535.0" fitWidth="648.0" layoutX="144.0" layoutY="-366.0" pickOnBounds="true">
                <image>
                   <Image url="@../Images/RedOrc.png" />

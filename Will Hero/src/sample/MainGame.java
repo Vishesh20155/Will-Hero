@@ -3,6 +3,7 @@ package sample;
 import com.sun.scenario.Settings;
 import javafx.animation.*;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -355,7 +356,29 @@ public class MainGame extends Application implements Initializable, Serializable
             displayText.setText("Equipped Sword");
             fade(displayText, 1, 1000, true, 4).play();
             Sword.setOpacity(1);
-            runTranslateTransition(GroupOrc2, 6000, 0, 2000).play();
+            runTranslateTransition(GroupOrc2, 240, 0, 2000).play();
+            Timer t = new Timer();
+            Timer timer = new Timer();
+            t.schedule(new TimerTask() {
+                           @Override
+                           public void run() {
+
+                               runTranslateTransition(GroupOrc2, 0, 1000, 1000).play();
+//                                       Orc1.setOpacity(0);
+
+
+                           }}
+                    , 1000);
+            timer.schedule(new TimerTask() {
+                               @Override
+                               public void run() {
+                                   GroupOrc2.setOpacity(0);
+
+
+
+
+                               }}
+                    , 1500);
             score+=4;
             return;
         }
@@ -426,7 +449,7 @@ public class MainGame extends Application implements Initializable, Serializable
             {
                 System.out.println("hitting group");
                 groupOrc1Dead = true;
-                runTranslateTransition(GroupOrc1, 8000, 0, 2000).play();
+                runTranslateTransition(GroupOrc1, 120, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
                 coinNumber += 4;
             }
@@ -444,7 +467,7 @@ public class MainGame extends Application implements Initializable, Serializable
                 System.out.println("hitting Orc6");
                 //Fix groupOrc1 variable
                 groupOrc1Dead = true;
-                runTranslateTransition(Orc6, 6000, 0, 2000).play();
+                runTranslateTransition(Orc6, 120, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
                 coinNumber += 4;
             }
@@ -605,7 +628,7 @@ public class MainGame extends Application implements Initializable, Serializable
 
                 timer.schedule(new TimerTask() {
                     @Override
-                    public void run() {
+                    public void run()  {
                         System.out.println("Inside timer thread");
                         if(pane2.getTranslateX() >= AbyssCoordinate-120){
                             System.out.println("Inside timer thread 2");
@@ -613,9 +636,16 @@ public class MainGame extends Application implements Initializable, Serializable
                             //AbyssFallorNot = true;
                             try {
                                 death();
+                                //showGameOver();
+
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+                            catch (IllegalStateException e){
+                                //System.out.println("Fell into abyss!");
+                                e.printStackTrace();
+                            }
+
 
                         }
                     }
@@ -641,7 +671,34 @@ public class MainGame extends Application implements Initializable, Serializable
             if(Orc1.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
-                runTranslateTransition(Orc1, 9000, 0, 2000).play();
+                // Changes here have to ask where the problem is coming
+                runTranslateTransition(Orc1, 180, 0, 1000).play();
+                //runTranslateTransition(Orc1 , 0 , 1000 , 1000).play();
+                Timer t = new Timer();
+                Timer timer = new Timer();
+                t.schedule(new TimerTask() {
+                                   @Override
+                                   public void run() {
+
+                                       runTranslateTransition(Orc1, 0, 1000, 1000).play();
+
+
+                                       //fade(Orc1 , 0 , 1200);
+
+
+                                   }}
+                        , 1000);
+                timer.schedule(new TimerTask() {
+                                   @Override
+                                   public void run() {
+                                       Orc1.setOpacity(0);
+
+
+
+
+                                   }}
+                        , 1500);
+
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
                 coinNumber+=2;
                 score+=3;
@@ -654,7 +711,7 @@ public class MainGame extends Application implements Initializable, Serializable
             if(Orc2.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
-                runTranslateTransition(Orc2, 6000, 0, 2000).play();
+                runTranslateTransition(Orc2, 9000, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
                 coinNumber += 2;
                 score+=3;
@@ -670,7 +727,7 @@ public class MainGame extends Application implements Initializable, Serializable
             if(GroupOrc1.getTranslateY()<Hero.getTranslateY() && (GroupOrc1.getTranslateX() == -1080))
                 death();
             else {
-                runTranslateTransition(GroupOrc1, 8000, 0, 2000).play();
+                runTranslateTransition(GroupOrc1, 120, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
                 coinNumber += 4;
                 score+=3;
@@ -714,11 +771,62 @@ public class MainGame extends Application implements Initializable, Serializable
                     sword1.hit(Sword);
                 }));
                 Timeline next = new Timeline(new KeyFrame(Duration.millis(1), e -> {
-                    runTranslateTransition(Orc3, 6000, 0, 2000).play();
+                    runTranslateTransition(Orc3, 180, 0, 2000).play();
+                    Timer t = new Timer();
+                    Timer timer = new Timer();
+                    t.schedule(new TimerTask() {
+                                   @Override
+                                   public void run() {
+
+                                       runTranslateTransition(Orc3, 0, 1000, 1000).play();
+//                                       Orc1.setOpacity(0);
+
+
+                                   }}
+                            , 1000);
+                    timer.schedule(new TimerTask() {
+                                       @Override
+                                       public void run() {
+                                           Orc3.setOpacity(0);
+
+
+
+
+                                       }}
+                            , 1500);
+
                 }));
                 new SequentialTransition(intro, next).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
                 coinNumber +=2;
+                score+=3;
+            }
+            return;
+
+        }
+
+        if(pane2.getTranslateX() == -1200){
+            System.out.println("check Grouporc1 function");
+            if(GroupOrc1.getTranslateY()<Hero.getTranslateY() && !groupOrc1Dead)
+                death();
+            else {
+                // Changes here have to ask where the problem is coming
+                runTranslateTransition(GroupOrc1, 9000, 0, 1000).play();
+                //runTranslateTransition(Orc1 , 0 , 1000 , 1000).play();
+                Timer t = new Timer();
+                t.schedule(new TimerTask() {
+                               @Override
+                               public void run() {
+
+                                   //runTranslateTransition(Orc1, 0, 1000, 1000).play();
+                                       GroupOrc1.setOpacity(0);
+
+
+                               }}
+                        , 1000);
+
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
+                coinNumber+=2;
                 score+=3;
             }
             return;
@@ -747,18 +855,58 @@ public class MainGame extends Application implements Initializable, Serializable
                     sword1.hit(Sword);
                 }));
                 Timeline next = new Timeline(new KeyFrame(Duration.millis(1), e -> {
-                    runTranslateTransition(Orc5, 6000, 0, 2000).play();
+                    runTranslateTransition(Orc5, 240, 0, 2000).play();
+//                    Timer t = new Timer();
+//                    t.schedule(new TimerTask() {
+//                                   @Override
+//                                   public void run() {
+//
+//                                       runTranslateTransition(Orc5, 0, 1000, 1000).play();
+//
+//
+//                                   }}
+//                            , 1000);
                 }));
                 new SequentialTransition(intro, next).play();
-                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
-                coinNumber +=2;
-                score+=3;
+
             }
             return;
 
         }
 
-        if(pane2.getTranslateX() == -5040) {
+        if(pane2.getTranslateX() == -3240){
+            System.out.println("check Orc5 function");
+            if(Orc5.getTranslateY()<Hero.getTranslateY())
+                death();
+            else {
+                Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    sword1.hit(Sword);
+                }));
+                Timeline next = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+                    runTranslateTransition(Orc5, 9000, 0, 2000).play();
+//                    runTranslateTransition(Orc5, 240, 0, 2000).play();
+//                    Timer t = new Timer();
+//                    t.schedule(new TimerTask() {
+//                                   @Override
+//                                   public void run() {
+//
+//                                       runTranslateTransition(Orc5, 0, 1000, 1000).play();
+//
+//
+//                                   }}
+//                            , 1000);
+                }));
+                new SequentialTransition(intro, next).play();
+                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
+                coinNumber += 2;
+                score += 3;
+
+                return;
+            }
+
+        }
+
+        if(pane2.getTranslateX() == -5160) {
 
             System.out.println("check Orc6 function");
             if(Orc6.getTranslateY()<Hero.getTranslateY() && Orc6.getTranslateX() == -5040)
@@ -783,7 +931,29 @@ public class MainGame extends Application implements Initializable, Serializable
                     sword1.hit(Sword);
                 }));
                 Timeline next = new Timeline(new KeyFrame(Duration.millis(1), e -> {
-                    runTranslateTransition(Orc7, 6000, 0, 2000).play();
+                    runTranslateTransition(Orc7, 240, 0, 2000).play();
+                    Timer t = new Timer();
+                    Timer timer = new Timer();
+                    t.schedule(new TimerTask() {
+                                   @Override
+                                   public void run() {
+
+                                       runTranslateTransition(Orc7, 0, 1000, 1000).play();
+
+
+                                   }}
+                            , 1000);
+                    timer.schedule(new TimerTask() {
+                                       @Override
+                                       public void run() {
+                                           Orc7.setOpacity(0);
+
+
+
+
+                                       }}
+                            , 1500);
+
                 }));
                 new SequentialTransition(intro, next).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
@@ -793,6 +963,37 @@ public class MainGame extends Application implements Initializable, Serializable
             return;
 
         }
+
+//        if(pane2.getTranslateX() == -3600) {
+//
+//            System.out.println("check Orc7 function");
+//            if(Orc7.getTranslateY()<Hero.getTranslateY())
+//                death();
+//            else {
+//                Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+//                    sword1.hit(Sword);
+//                }));
+//                Timeline next = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+//                    runTranslateTransition(Orc7, 60, 0, 2000).play();
+//                    Timer t = new Timer();
+//                    t.schedule(new TimerTask() {
+//                                   @Override
+//                                   public void run() {
+//
+//                                       runTranslateTransition(Orc7, 0, 1000, 1000).play();
+//
+//
+//                                   }}
+//                            , 1000);
+//                }));
+//                new SequentialTransition(intro, next).play();
+//                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
+//                coinNumber +=2;
+//                score+=3;
+//            }
+//            return;
+//
+//        }
 
         if(pane2.getTranslateX() == -4320) {
 
@@ -1049,14 +1250,27 @@ public class MainGame extends Application implements Initializable, Serializable
     }
 
     private void death() throws IOException {
+
         System.out.println("death");
         runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
-        try{
+        Platform.runLater(()->{try {
             showGameOver();
         }
-        finally {
+        catch (IOException e){
+            e.printStackTrace();
 
         }
+        });
+
+//        try{
+//            showGameOver();
+//
+//        }
+//        finally {
+//
+//
+//
+//        }
     }
 
     public static double getHeroPosition(){
