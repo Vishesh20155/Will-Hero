@@ -10,4 +10,9 @@ public class CoinChest extends Chest{
     protected int getNumCoins(){
         return this.NumCoins;
     }
+
+    @Override
+    public void openChest() {
+
+    }
 }

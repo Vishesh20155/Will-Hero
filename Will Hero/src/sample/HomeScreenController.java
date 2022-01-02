@@ -104,13 +104,14 @@ public class HomeScreenController extends Application implements Initializable {
 
     @FXML
     void PlayButtonClicked(MouseEvent event) throws IOException {
-        Parent secondaryLayout = FXMLLoader.load(getClass().getResource("Login.fxml"));
+//        Parent secondaryLayout = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Parent secondaryLayout = FXMLLoader.load(getClass().getResource("MainGame.fxml"));
 
         Scene secondScene = new Scene(secondaryLayout);
 
         stage.close();
         stage = new Stage();
-        stage.setTitle("Will Hero -- Login Page");
+        stage.setTitle("Will Hero -- Game");
         stage.setScene(secondScene);
         stage.show();
     }

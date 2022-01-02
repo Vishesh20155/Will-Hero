@@ -11,9 +11,14 @@ public class Hero extends GameObject {
         this.coins = 0;
     }
 
+    public void moveForward(){
+
+    }
+
     public void updatePosition(float x, float y){
 
     }
+//    protected Position getPosition()
 
     protected void setWeapon(Weapon w){
         this.weapon = w;
@@ -29,6 +34,9 @@ public class Hero extends GameObject {
 
     protected Weapon getWeapon(){
         return this.weapon;
+    }
+    public void fallfromAbyss(){
+
     }
 
 }

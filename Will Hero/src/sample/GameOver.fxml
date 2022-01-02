@@ -55,22 +55,22 @@
       </Pane>
       <Pane layoutX="81.0" layoutY="348.0" prefHeight="336.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <ImageView fitHeight="89.0" fitWidth="106.0" layoutX="209.0" layoutY="50.0" onMouseEntered="#underlinePlayAgainText" onMouseExited="#removeUnderlinePlayAgainText" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="89.0" fitWidth="106.0" layoutX="209.0" layoutY="50.0" onMouseClicked="#PlayAgainClicked" onMouseEntered="#underlinePlayAgainText" onMouseExited="#removeUnderlinePlayAgainText" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/play-button-arrowhead.png" />
                </image>
             </ImageView>
-            <Text fx:id="PlayAgainText" fill="WHITE" layoutX="172.0" layoutY="172.0" onMouseEntered="#underlinePlayAgainText" onMouseExited="#removeUnderlinePlayAgainText" strokeType="OUTSIDE" strokeWidth="0.0" text="Play Again">
+            <Text fx:id="PlayAgainText" fill="WHITE" layoutX="172.0" layoutY="172.0" onMouseClicked="#PlayAgainClicked" onMouseEntered="#underlinePlayAgainText" onMouseExited="#removeUnderlinePlayAgainText" strokeType="OUTSIDE" strokeWidth="0.0" text="Play Again">
                <font>
                   <Font name="Comic Sans MS" size="35.0" />
                </font>
             </Text>
-            <ImageView fitHeight="89.0" fitWidth="106.0" layoutX="628.0" layoutY="51.0" onMouseEntered="#underlineHomeText" onMouseExited="#removeUnderlineHomeText" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="89.0" fitWidth="106.0" layoutX="628.0" layoutY="51.0" onMouseClicked="#ReturnToHomeClicked" onMouseEntered="#underlineHomeText" onMouseExited="#removeUnderlineHomeText" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/home.png" />
                </image>
             </ImageView>
-            <Text fx:id="HomeText" fill="WHITE" layoutX="539.0" layoutY="176.0" onMouseEntered="#underlineHomeText" onMouseExited="#removeUnderlineHomeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Return to Home">
+            <Text fx:id="HomeText" fill="WHITE" layoutX="539.0" layoutY="176.0" onMouseClicked="#ReturnToHomeClicked" onMouseEntered="#underlineHomeText" onMouseExited="#removeUnderlineHomeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Return to Home">
                <font>
                   <Font name="Comic Sans MS Bold" size="35.0" />
                </font>

@@ -8,8 +8,16 @@ public class Island extends GameObject {
     private Position endPosition;
     private ImageView img;
 
-    public Island(Position start, Position end){
-//        img.setImage();
+    protected Position getStartPosition() {
+        return startPosition;
     }
+
+    protected Position getEndPosition() {
+        return endPosition;
+    }
+
+//    public Island(Position start, Position end){
+////        img.setImage();
+//    }
 
 }

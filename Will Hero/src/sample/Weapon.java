@@ -9,7 +9,19 @@ public abstract class Weapon extends GameObject {
 
     public void upgradeWeapon(){
 
+//        level++;
+//        damage+=incDamage;
+//        hitRange+=incRange;
+
     }
+    protected int getDamage(){
+        return damage;
+    }
+
+    public void setHitRange(int hitRange) {
+        this.hitRange = hitRange;
+    }
+//    public void equals();
 
     public abstract void hit(ImageView s);
 }

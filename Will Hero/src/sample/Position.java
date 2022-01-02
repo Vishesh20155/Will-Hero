@@ -27,4 +27,11 @@ public class Position implements Serializable {
     protected float getY(){
         return this.y;
     }
+//    public boolean equals(Position position){
+//
+//    }
+
+    public void checkLimits(){
+
+    }
 }

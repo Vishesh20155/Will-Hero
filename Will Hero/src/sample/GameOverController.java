@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -111,5 +113,33 @@ public class GameOverController extends Application implements Initializable{
         CoinsHeadingText.setOpacity(1);
         ScoreText.setText(Integer.toString(MainGame.getGameScore()));
         NoOfCoinsText.setText(Integer.toString(MainGame.getCoins()));
+    }
+
+    @FXML
+    void PlayAgainClicked(MouseEvent event) throws IOException {
+        Parent secondaryLayout = FXMLLoader.load(getClass().getResource("MainGame.fxml"));
+
+        Stage temp = (Stage) PlayAgainText.getScene().getWindow();
+        temp.close();
+        Scene secondScene = new Scene(secondaryLayout);
+
+        HomeScreenController.stage.close();
+        HomeScreenController.stage.setTitle("Will Hero -- Game");
+        HomeScreenController.stage.setScene(secondScene);
+        HomeScreenController.stage.show();
+    }
+
+    @FXML
+    void ReturnToHomeClicked(MouseEvent event) throws IOException {
+        Parent secondaryLayout = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
+
+        Stage temp = (Stage) PlayAgainText.getScene().getWindow();
+        temp.close();
+        Scene secondScene = new Scene(secondaryLayout);
+
+        HomeScreenController.stage.close();
+        HomeScreenController.stage.setTitle("Will Hero -- Home");
+        HomeScreenController.stage.setScene(secondScene);
+        HomeScreenController.stage.show();
     }
 }

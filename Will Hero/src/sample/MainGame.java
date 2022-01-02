@@ -16,6 +16,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -23,13 +25,9 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import static sample.CommonAnimation.*;
@@ -90,6 +88,9 @@ public class MainGame extends Application implements Initializable, Serializable
     }
 
 
+
+
+
     private boolean firstClick = true;
     private static Parent p_root;
     private static Stage myStage;
@@ -110,31 +111,50 @@ public class MainGame extends Application implements Initializable, Serializable
     private final int NoofHitsforBosstoDie = 2;
     private int NoofHitsonBoss = 0;
 
+    // Initializing orcs using classes
 
 
-    @FXML
-    private Group Hero;
+    private Orc1 orc1 = new Orc1(100,2);
+    private Orc1 orc2 = new Orc1(100,2);
+    private Orc2 grouporc1 = new Orc2(100,4);
+    private Orc2 grouporc2 = new Orc2(100,4);
+    private Orc2 grouporc3 = new Orc2(100,4);
+    private Orc1 orc3 = new Orc1(100,2);
+    private Orc1 orc5 = new Orc1(100,2);
+    private Orc1 orc6 = new Orc1(100,2);
+    private Orc1 orc7 = new Orc1(100,2);
 
-    @FXML
-    private ImageView HeroOnly;
+    // Array list of game objects
 
-    @FXML
-    private ImageView Sword;
+    private ArrayList<GameObject> GameObjects = new ArrayList<GameObject>();
 
-    @FXML
-    private ImageView Knife;
 
-    @FXML
-    private ImageView Knife2;
 
-    @FXML
-    private Group GroupOrc1;
 
-    @FXML
-    private Group GroupOrc2;
 
     @FXML
-    private Pane pane2;
+    transient private Group Hero;
+
+    @FXML
+    transient private ImageView HeroOnly;
+
+    @FXML
+    transient private ImageView Sword;
+
+    @FXML
+    transient private ImageView Knife;
+
+    @FXML
+    transient private ImageView Knife2;
+
+    @FXML
+    transient private Group GroupOrc1;
+
+    @FXML
+    transient private Group GroupOrc2;
+
+    @FXML
+    transient private Pane pane2;
 
     @FXML
     private ImageView Orc1;
@@ -240,6 +260,33 @@ public class MainGame extends Application implements Initializable, Serializable
 
     @FXML
     private ImageView chest6open;
+
+    @FXML
+    private Circle Snowball1;
+
+    @FXML
+    private Circle Snowball2;
+
+    @FXML
+    private Circle Snowball3;
+
+    @FXML
+    private Circle Snowball4;
+
+    @FXML
+    private Circle Snowball5;
+
+    @FXML
+    private Circle Snowball6;
+
+    @FXML
+    private Circle Snowball7;
+
+    @FXML
+    private Circle Snowball8;
+
+    @FXML
+    private ImageView ChristmasModeButton;
 
 
     @FXML
@@ -357,6 +404,8 @@ public class MainGame extends Application implements Initializable, Serializable
             fade(displayText, 1, 1000, true, 4).play();
             Sword.setOpacity(1);
             runTranslateTransition(GroupOrc2, 240, 0, 2000).play();
+            grouporc2.decreaseHealthRemaining(75);
+            System.out.println("Orc fell into abyss");
             Timer t = new Timer();
             Timer timer = new Timer();
             t.schedule(new TimerTask() {
@@ -437,6 +486,88 @@ public class MainGame extends Application implements Initializable, Serializable
             return;
         }
     }
+    static boolean ChristmasMode = false;
+    @FXML
+    void ChristmasModeOn(MouseEvent event) {
+        TranslateTransition l1 = new TranslateTransition();
+        if(ChristmasMode == false){
+            ChristmasMode = true;
+            Snowball1.setOpacity(1);
+            Snowball2.setOpacity(1);
+            Snowball3.setOpacity(1);
+            Snowball4.setOpacity(1);
+            Snowball5.setOpacity(1);
+            Snowball6.setOpacity(1);
+            Snowball7.setOpacity(1);
+            Snowball8.setOpacity(1);
+
+            l1 = runTranslateTransition(Snowball1 , 0 , 700 , 5000 , Timeline.INDEFINITE , false);
+            l1.play();
+            runTranslateTransition(Snowball2 , 0 , 700 , 5500 , Timeline.INDEFINITE , false).play();
+            runTranslateTransition(Snowball3 , 0 , 700 , 6000 , Timeline.INDEFINITE , false).play();
+            runTranslateTransition(Snowball4 , 0 , 700 , 6500 , Timeline.INDEFINITE , false).play();
+            runTranslateTransition(Snowball5 , 0 , 700 , 7000 , Timeline.INDEFINITE , false).play();
+            runTranslateTransition(Snowball6 , 0 , 700 , 7500 , Timeline.INDEFINITE , false).play();
+            runTranslateTransition(Snowball7 , 0 , 700 , 8000 , Timeline.INDEFINITE , false).play();
+            runTranslateTransition(Snowball8 , 0 , 700 , 8500 , Timeline.INDEFINITE , false).play();
+
+        }
+        else {
+            ChristmasMode = false;
+            //l1.stop();
+
+            Snowball1.setOpacity(0);
+            Snowball2.setOpacity(0);
+            Snowball3.setOpacity(0);
+            Snowball4.setOpacity(0);
+            Snowball5.setOpacity(0);
+            Snowball6.setOpacity(0);
+            Snowball7.setOpacity(0);
+            Snowball8.setOpacity(0);
+
+        }
+
+
+
+    }
+    private void InitializeGameObject(){
+        GameObjects.add(heroObject);
+        GameObjects.add(orc1);
+        GameObjects.add(orc2);
+        GameObjects.add(orc3);
+        GameObjects.add(orc5);
+        GameObjects.add(orc6);
+        GameObjects.add(orc7);
+        GameObjects.add(grouporc1);
+        GameObjects.add(grouporc2);
+        GameObjects.add(grouporc3);
+        GameObjects.add(new Boss());
+        GameObjects.add(tnt1);
+        GameObjects.add(tnt2);
+        GameObjects.add(new WeaponChest());
+        GameObjects.add(new WeaponChest());
+        GameObjects.add(new WeaponChest());
+        GameObjects.add(new CoinChest());
+        GameObjects.add(new CoinChest());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+        GameObjects.add(new Island());
+
+
+
+    }
 
     private void checkAttack(){
         if(pane2.getTranslateX() == -1080){
@@ -449,6 +580,7 @@ public class MainGame extends Application implements Initializable, Serializable
             {
                 System.out.println("hitting group");
                 groupOrc1Dead = true;
+                grouporc1.decreaseHealthRemaining(75);
                 runTranslateTransition(GroupOrc1, 120, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
                 coinNumber += 4;
@@ -467,6 +599,8 @@ public class MainGame extends Application implements Initializable, Serializable
                 System.out.println("hitting Orc6");
                 //Fix groupOrc1 variable
                 groupOrc1Dead = true;
+                orc6.decreaseHealthRemaining(75);
+
                 runTranslateTransition(Orc6, 120, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
                 coinNumber += 4;
@@ -514,6 +648,18 @@ public class MainGame extends Application implements Initializable, Serializable
 
     }
 
+    void AbyssIterator(){
+
+        Iterator i = AbyssList.iterator();
+        while (i.hasNext()){
+            if(i.next() == (Double)pane2.getTranslateX()){
+                System.out.println("Fell into abyss!");
+            }
+
+        }
+
+    }
+
 
     void checkBoss() throws IOException {
 
@@ -546,11 +692,13 @@ public class MainGame extends Application implements Initializable, Serializable
 
         if(pane2.getTranslateX() == -7560 && Hero.getTranslateY() - 250 <= BossOrc.getTranslateY()){
             System.out.println("Hit number 3 on boss orc . Boss orc death!!!");
+
             runTranslateTransition(BossOrc , 0 ,10000 , 4000).play();
+            showGameWon();
         }
 
         if (pane2.getTranslateX() == -7560 && Hero.getTranslateY() - 250 > BossOrc.getTranslateY()){
-            System.out.println("Death fro boss orc");
+            System.out.println("Death from boss orc");
             death();
         }
 
@@ -672,6 +820,8 @@ public class MainGame extends Application implements Initializable, Serializable
                 death();
             else {
                 // Changes here have to ask where the problem is coming
+                System.out.println("Orc fell into abyss!");
+                orc1.decreaseHealthRemaining(50);
                 runTranslateTransition(Orc1, 180, 0, 1000).play();
                 //runTranslateTransition(Orc1 , 0 , 1000 , 1000).play();
                 Timer t = new Timer();
@@ -711,6 +861,7 @@ public class MainGame extends Application implements Initializable, Serializable
             if(Orc2.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
+                orc2.decreaseHealthRemaining(100);
                 runTranslateTransition(Orc2, 9000, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
                 coinNumber += 2;
@@ -728,6 +879,7 @@ public class MainGame extends Application implements Initializable, Serializable
                 death();
             else {
                 runTranslateTransition(GroupOrc1, 120, 0, 2000).play();
+                grouporc1.decreaseHealthRemaining(50);
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
                 coinNumber += 4;
                 score+=3;
@@ -736,20 +888,20 @@ public class MainGame extends Application implements Initializable, Serializable
 
         }
 
-        if(pane2.getTranslateX() <= -1040 && pane2.getTranslateX() >= -1140) {
-
-            System.out.println("check GroupOrc2 function");
-            if(GroupOrc2.getTranslateY()<Hero.getTranslateY())
-                death();
-            else {
-                runTranslateTransition(GroupOrc2, 8000, 0, 2000).play();
-                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
-                coinNumber += 4;
-                score+=3;
-            }
-            return;
-
-        }
+//        if(pane2.getTranslateX() <= -1040 && pane2.getTranslateX() >= -1140) {
+//
+//            System.out.println("check GroupOrc2 function");
+//            if(GroupOrc2.getTranslateY()<Hero.getTranslateY())
+//                death();
+//            else {
+//                runTranslateTransition(GroupOrc2, 8000, 0, 2000).play();
+//                CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 4));
+//                coinNumber += 4;
+//                score+=3;
+//            }
+//            return;
+//
+//        }
 //        if(pane2.getTranslateX() <= -1540 && pane2.getTranslateX() >= -1640) {
 //
 //            System.out.println("check GroupOrc2 function");
@@ -767,6 +919,8 @@ public class MainGame extends Application implements Initializable, Serializable
             if(Orc3.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
+                orc3.decreaseHealthRemaining(75);
+                System.out.println("Orc fell into abyss");
                 Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
                     sword1.hit(Sword);
                 }));
@@ -812,6 +966,7 @@ public class MainGame extends Application implements Initializable, Serializable
             else {
                 // Changes here have to ask where the problem is coming
                 runTranslateTransition(GroupOrc1, 9000, 0, 1000).play();
+                grouporc1.decreaseHealthRemaining(50);
                 //runTranslateTransition(Orc1 , 0 , 1000 , 1000).play();
                 Timer t = new Timer();
                 t.schedule(new TimerTask() {
@@ -834,6 +989,7 @@ public class MainGame extends Application implements Initializable, Serializable
         }
 
 
+
 //        if(pane2.getTranslateX() <= -2500 && pane2.getTranslateX() >= -2600) {
 //
 //            System.out.println("check Orc4 function");
@@ -851,6 +1007,7 @@ public class MainGame extends Application implements Initializable, Serializable
             if(Orc5.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
+                orc5.decreaseHealthRemaining(75);
                 Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
                     sword1.hit(Sword);
                 }));
@@ -879,6 +1036,7 @@ public class MainGame extends Application implements Initializable, Serializable
             if(Orc5.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
+                orc5.decreaseHealthRemaining(75);
                 Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
                     sword1.hit(Sword);
                 }));
@@ -912,6 +1070,7 @@ public class MainGame extends Application implements Initializable, Serializable
             if(Orc6.getTranslateY()<Hero.getTranslateY() && Orc6.getTranslateX() == -5040)
                 death();
             else {
+                orc6.decreaseHealthRemaining(50);
                 runTranslateTransition(Orc6, 6000, 0, 2000).play();
                 CoinNumberText.setText(Integer.toString(Integer.parseInt(CoinNumberText.getText()) + 2));
                 coinNumber += 2;
@@ -927,6 +1086,8 @@ public class MainGame extends Application implements Initializable, Serializable
             if(Orc7.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
+                orc7.decreaseHealthRemaining(75);
+                System.out.println("Orc fell into abyss");
                 Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
                     sword1.hit(Sword);
                 }));
@@ -1001,6 +1162,7 @@ public class MainGame extends Application implements Initializable, Serializable
             if(GroupOrc3.getTranslateY()<Hero.getTranslateY())
                 death();
             else {
+                grouporc3.decreaseHealthRemaining(100);
                 Timeline intro = new Timeline(new KeyFrame(Duration.millis(1), e -> {
                     sword1.hit(Sword);
                 }));
@@ -1082,6 +1244,30 @@ public class MainGame extends Application implements Initializable, Serializable
         }
     }
     */
+    public void serialize() throws IOException{
+        MainGame x = this;
+        ObjectOutputStream out = null;
+        try {
+            out = new ObjectOutputStream(new FileOutputStream("GameData.txt"));
+            out.writeObject(x);
+        }
+        finally {
+            out.close();
+        }
+
+
+
+    }
+    public void deserialize() throws IOException , ClassNotFoundException{
+        ObjectInputStream in = null;
+        try {
+            in = new ObjectInputStream(new FileInputStream("GameData.txt"));
+        }
+        finally {
+            in.close();
+        }
+
+    }
 
     @FXML
     void click(MouseEvent event) throws InterruptedException, IOException {
@@ -1091,6 +1277,11 @@ public class MainGame extends Application implements Initializable, Serializable
 
         ScoreLabel.setText(Integer.toString(score));
         CoinNumberText.setText(Integer.toString(coinNumber));
+        String pathtoSound = "Will-Hero/Will Hero/src/assets/Jump.wav";
+
+        Media sound = new Media(new File(pathtoSound).toURI().toString());
+        MediaPlayer soundPlayer = new MediaPlayer(sound);
+        soundPlayer.play();
 
 
         if(firstClick)
@@ -1106,7 +1297,7 @@ public class MainGame extends Application implements Initializable, Serializable
 //            System.out.println("savedGamePosition = " + savedGamePosition);
             if(savedGamePosition != 0){
                 System.out.println("can retrieve the game");
-                CommonAnimation.runTranslateTransition(Hero, 240, 0, 2000).play();
+                CommonAnimation.runTranslateTransition(Hero, 240,0, 2000).play();
                 CommonAnimation.runTranslateTransition(pane2, savedGamePosition, 0, 2000).play();
                 noOfClicks = 5;
             }
@@ -1148,6 +1339,7 @@ public class MainGame extends Application implements Initializable, Serializable
 
         //else
         {
+            // Observer design pattern
             checkOrc();
             checkChest();
             checkAttack();
@@ -1228,6 +1420,11 @@ public class MainGame extends Application implements Initializable, Serializable
     @FXML
     void SettingsButtonClicked(MouseEvent event) throws IOException {
 
+        String pauseSoundpath = "Will-Hero/Will Hero/src/assets/smb_pause.wav";
+        Media pauseSound = new Media(new File(pauseSoundpath).toURI().toString());
+        MediaPlayer pauseSoundplayer = new MediaPlayer(pauseSound);
+        pauseSoundplayer.play();
+
         Parent secondaryLayout = FXMLLoader.load(getClass().getResource("PauseMenu.fxml"));
 
         Scene secondScene = new Scene(secondaryLayout);
@@ -1250,6 +1447,13 @@ public class MainGame extends Application implements Initializable, Serializable
     }
 
     private void death() throws IOException {
+        // https://themushroomkingdom.net/media/smb/wav
+
+
+        String deathSoundPath = "Will-Hero/Will Hero/src/assets/Death.wav";
+        Media deathSound = new Media(new File(deathSoundPath).toURI().toString());
+        MediaPlayer deathSoundPlayer = new MediaPlayer(deathSound);
+        deathSoundPlayer.play();
 
         System.out.println("death");
         runTranslateTransitionForHero(Hero, 0, 500, 2000).play();
